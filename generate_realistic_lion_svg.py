@@ -1,0 +1,134 @@
+def generate_svg():
+    return """<svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg" fill="none">
+    <defs>
+        <radialGradient id="maneGlow" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+            <stop offset="0%" stop-color="#C9A84C" stop-opacity="0.6"/>
+            <stop offset="50%" stop-color="#7A1C2E" stop-opacity="0.3"/>
+            <stop offset="100%" stop-color="#2D0811" stop-opacity="0"/>
+        </radialGradient>
+        <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#E2C06E" />
+            <stop offset="50%" stop-color="#C9A84C" />
+            <stop offset="100%" stop-color="#8A7560" />
+        </linearGradient>
+        <filter id="glow">
+            <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+            <feMerge>
+                <feMergeNode in="coloredBlur"/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+        </filter>
+        <filter id="shadow">
+            <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#2D0811" flood-opacity="0.5"/>
+        </filter>
+    </defs>
+
+    <!-- Animated background glow -->
+    <circle cx="80" cy="80" r="70" fill="url(#maneGlow)">
+        <animate attributeName="opacity" values="0.6;1;0.6" dur="4s" repeatCount="indefinite" />
+        <animateTransform attributeName="transform" type="scale" values="0.95;1.05;0.95" cx="80" cy="80" dur="4s" repeatCount="indefinite" />
+    </circle>
+
+    <g filter="url(#shadow)">
+        <!-- Majestic Mane - layered and realistic curves -->
+        <!-- Back layer of mane -->
+        <path d="M 80 15
+                 C 120 15, 145 40, 145 75
+                 C 145 110, 125 140, 80 145
+                 C 35 140, 15 110, 15 75
+                 C 15 40, 40 15, 80 15 Z"
+              fill="#2D0811" stroke="#C9A84C" stroke-width="1.5" opacity="0.9">
+             <animate attributeName="d"
+                      values="M 80 15 C 120 15, 145 40, 145 75 C 145 110, 125 140, 80 145 C 35 140, 15 110, 15 75 C 15 40, 40 15, 80 15 Z;
+                              M 80 13 C 123 14, 148 42, 147 77 C 146 112, 127 142, 80 147 C 33 142, 14 112, 13 77 C 12 42, 37 14, 80 13 Z;
+                              M 80 15 C 120 15, 145 40, 145 75 C 145 110, 125 140, 80 145 C 35 140, 15 110, 15 75 C 15 40, 40 15, 80 15 Z"
+                      dur="5s" repeatCount="indefinite"/>
+        </path>
+
+        <!-- Mid layer mane (Crimson/Burgundy) -->
+        <path d="M 80 25
+                 C 110 25, 130 45, 130 75
+                 C 130 100, 115 125, 80 130
+                 C 45 125, 30 100, 30 75
+                 C 30 45, 50 25, 80 25 Z"
+              fill="#4A0E1C" stroke="#7A1C2E" stroke-width="2">
+             <animate attributeName="d"
+                      values="M 80 25 C 110 25, 130 45, 130 75 C 130 100, 115 125, 80 130 C 45 125, 30 100, 30 75 C 30 45, 50 25, 80 25 Z;
+                              M 80 23 C 112 24, 132 47, 131 77 C 130 102, 117 127, 80 132 C 43 127, 30 102, 29 77 C 28 47, 48 24, 80 23 Z;
+                              M 80 25 C 110 25, 130 45, 130 75 C 130 100, 115 125, 80 130 C 45 125, 30 100, 30 75 C 30 45, 50 25, 80 25 Z"
+                      dur="4s" repeatCount="indefinite"/>
+        </path>
+
+        <!-- Dynamic Mane Strands (Gold and Crimson) -->
+        <path d="M 80 15 Q 100 30, 135 45 Q 110 55, 140 70 Q 115 80, 135 100 Q 105 105, 120 130 Q 95 120, 80 145 Q 65 120, 40 130 Q 55 105, 25 100 Q 45 80, 20 70 Q 50 55, 25 45 Q 60 30, 80 15 Z"
+              fill="none" stroke="url(#goldGradient)" stroke-width="1.5">
+             <animate attributeName="d"
+                      values="M 80 15 Q 100 30, 135 45 Q 110 55, 140 70 Q 115 80, 135 100 Q 105 105, 120 130 Q 95 120, 80 145 Q 65 120, 40 130 Q 55 105, 25 100 Q 45 80, 20 70 Q 50 55, 25 45 Q 60 30, 80 15 Z;
+                              M 80 13 Q 103 28, 138 48 Q 113 58, 143 73 Q 118 83, 138 103 Q 108 108, 123 133 Q 98 123, 80 148 Q 62 123, 37 133 Q 52 108, 22 103 Q 42 83, 17 73 Q 47 58, 22 48 Q 57 28, 80 13 Z;
+                              M 80 15 Q 100 30, 135 45 Q 110 55, 140 70 Q 115 80, 135 100 Q 105 105, 120 130 Q 95 120, 80 145 Q 65 120, 40 130 Q 55 105, 25 100 Q 45 80, 20 70 Q 50 55, 25 45 Q 60 30, 80 15 Z"
+                      dur="6s" repeatCount="indefinite"/>
+        </path>
+        <path d="M 80 25 Q 95 35, 120 50 Q 100 60, 125 75 Q 105 85, 120 100 Q 95 105, 105 120 Q 85 110, 80 125 Q 75 110, 55 120 Q 65 105, 40 100 Q 55 85, 35 75 Q 60 60, 40 50 Q 65 35, 80 25 Z"
+              fill="none" stroke="#C9A84C" stroke-width="1" opacity="0.6">
+             <animate attributeName="d"
+                      values="M 80 25 Q 95 35, 120 50 Q 100 60, 125 75 Q 105 85, 120 100 Q 95 105, 105 120 Q 85 110, 80 125 Q 75 110, 55 120 Q 65 105, 40 100 Q 55 85, 35 75 Q 60 60, 40 50 Q 65 35, 80 25 Z;
+                              M 80 27 Q 92 37, 117 52 Q 97 62, 122 77 Q 102 87, 117 102 Q 92 107, 102 122 Q 82 112, 80 127 Q 78 112, 58 122 Q 68 107, 43 102 Q 58 87, 38 77 Q 63 62, 43 52 Q 68 37, 80 27 Z;
+                              M 80 25 Q 95 35, 120 50 Q 100 60, 125 75 Q 105 85, 120 100 Q 95 105, 105 120 Q 85 110, 80 125 Q 75 110, 55 120 Q 65 105, 40 100 Q 55 85, 35 75 Q 60 60, 40 50 Q 65 35, 80 25 Z"
+                      dur="5s" repeatCount="indefinite"/>
+        </path>
+
+        <!-- Lion Face Base (Realistic Structure) -->
+        <path d="M 80 40
+                 C 95 40, 105 50, 105 70
+                 C 105 85, 95 100, 85 105
+                 C 80 110, 80 110, 75 105
+                 C 65 100, 55 85, 55 70
+                 C 55 50, 65 40, 80 40 Z"
+              fill="#E2C06E" stroke="#C9A84C" stroke-width="1.5">
+             <!-- Subtle breathing animation on face -->
+             <animateTransform attributeName="transform" type="scale" values="1; 1.02; 1" cx="80" cy="70" dur="4s" repeatCount="indefinite"/>
+        </path>
+
+        <!-- Brow / Forehead Structure -->
+        <path d="M 65 55 Q 80 50, 95 55 Q 80 65, 65 55 Z" fill="#C9A84C" opacity="0.8"/>
+        <path d="M 75 40 Q 80 50, 85 40 Q 80 45, 75 40 Z" fill="#8A7560" opacity="0.6"/>
+
+        <!-- Cheeks and Snout -->
+        <path d="M 65 85 Q 80 95, 95 85 C 90 100, 70 100, 65 85 Z" fill="#C9A84C" opacity="0.7"/>
+        <path d="M 72 75 C 75 75, 85 75, 88 75 C 85 95, 75 95, 72 75 Z" fill="#E2C06E"/>
+
+        <!-- Eyes (Realistic & Glowing) -->
+        <!-- Left Eye -->
+        <path d="M 62 62 Q 68 58, 72 63 Q 68 66, 62 62 Z" fill="#2D0811" stroke="#4A0E1C" stroke-width="1"/>
+        <ellipse cx="67" cy="62.5" rx="2.5" ry="2" fill="#E2C06E" filter="url(#glow)">
+            <animate attributeName="fill" values="#E2C06E; #FFF; #E2C06E" dur="3s" repeatCount="indefinite" />
+        </ellipse>
+        <circle cx="67.5" cy="62" r="1" fill="#2D0811"/>
+
+        <!-- Right Eye -->
+        <path d="M 98 62 Q 92 58, 88 63 Q 92 66, 98 62 Z" fill="#2D0811" stroke="#4A0E1C" stroke-width="1"/>
+        <ellipse cx="93" cy="62.5" rx="2.5" ry="2" fill="#E2C06E" filter="url(#glow)">
+            <animate attributeName="fill" values="#E2C06E; #FFF; #E2C06E" dur="3s" repeatCount="indefinite" />
+        </ellipse>
+        <circle cx="92.5" cy="62" r="1" fill="#2D0811"/>
+
+        <!-- Nose -->
+        <path d="M 74 84 Q 80 82, 86 84 L 83 92 Q 80 95, 77 92 Z" fill="#2D0811" stroke="#4A0E1C" stroke-width="0.5"/>
+        <path d="M 77 85 Q 80 84, 83 85 Z" fill="#7A1C2E" stroke="#C9A84C" stroke-width="0.5"/>
+
+        <!-- Mouth and Jaw -->
+        <path d="M 80 93 L 80 98 M 73 100 Q 80 105, 87 100" stroke="#2D0811" stroke-width="1.5" fill="none"/>
+        <path d="M 75 102 Q 80 108, 85 102" stroke="#4A0E1C" stroke-width="1" fill="none"/>
+
+        <!-- Whiskers -->
+        <g stroke="#C9A84C" stroke-width="0.5" opacity="0.6">
+            <path d="M 65 88 Q 50 85, 40 88"><animate attributeName="d" values="M 65 88 Q 50 85, 40 88; M 65 88 Q 50 87, 40 90; M 65 88 Q 50 85, 40 88" dur="2s" repeatCount="indefinite"/></path>
+            <path d="M 66 91 Q 50 92, 42 95"><animate attributeName="d" values="M 66 91 Q 50 92, 42 95; M 66 91 Q 50 94, 42 97; M 66 91 Q 50 92, 42 95" dur="2.2s" repeatCount="indefinite"/></path>
+            <path d="M 68 94 Q 55 98, 48 102"><animate attributeName="d" values="M 68 94 Q 55 98, 48 102; M 68 94 Q 55 100, 48 104; M 68 94 Q 55 98, 48 102" dur="2.4s" repeatCount="indefinite"/></path>
+
+            <path d="M 95 88 Q 110 85, 120 88"><animate attributeName="d" values="M 95 88 Q 110 85, 120 88; M 95 88 Q 110 87, 120 90; M 95 88 Q 110 85, 120 88" dur="2s" repeatCount="indefinite"/></path>
+            <path d="M 94 91 Q 110 92, 118 95"><animate attributeName="d" values="M 94 91 Q 110 92, 118 95; M 94 91 Q 110 94, 118 97; M 94 91 Q 110 92, 118 95" dur="2.2s" repeatCount="indefinite"/></path>
+            <path d="M 92 94 Q 105 98, 112 102"><animate attributeName="d" values="M 92 94 Q 105 98, 112 102; M 92 94 Q 105 100, 112 104; M 92 94 Q 105 98, 112 102" dur="2.4s" repeatCount="indefinite"/></path>
+        </g>
+    </g>
+</svg>"""

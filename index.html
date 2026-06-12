@@ -624,6 +624,7 @@
     <a href="mailto:sirtajreid@gmail.com">Email</a>
   </div>
   <div class="brand-switcher">
+    <button class="brand-switch-btn" onclick="showGate()" style="color:var(--muted);letter-spacing:0.12em;" title="Back to collection selection">← Switch Brand</button>
     <button class="brand-switch-btn active" id="btn-taj" onclick="switchBrand('taj')">Tajmahallic</button>
     <button class="brand-switch-btn" id="btn-taj2" onclick="switchBrand('taj2')">Today's Another Journey</button>
   </div>
@@ -1061,6 +1062,13 @@ const BRANDS = {
 function selectBrand(brand) {
   document.getElementById('brand-gate').classList.add('hidden');
   switchBrand(brand);
+}
+
+function showGate() {
+  const gate = document.getElementById('brand-gate');
+  gate.classList.remove('hidden');
+  gate.style.display = 'flex';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function switchBrand(brand) {

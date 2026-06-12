@@ -605,6 +605,8 @@ function getFiltered(filter) {
 function imgSrc(file) {
   return baseFolder + file.split('/').map(encodeURIComponent).join('/');
 }
+
+function makeLabel(img) {
   if (img.tags.includes('headwear')) return 'Headwear';
   if (img.tags.includes('custom'))   return 'Custom Piece';
   if (img.tags.includes('lifestyle'))return 'Lifestyle';

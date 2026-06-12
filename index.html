@@ -560,6 +560,72 @@
     .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.7s ease, transform 0.7s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
+    /* FLOATING PLAY BUTTON */
+    #vibe-btn {
+      position: fixed; bottom: 2rem; right: 2rem; z-index: 500;
+      display: flex; align-items: center; gap: 0.6rem;
+      background: var(--primary); color: var(--cta-text);
+      border: none; cursor: pointer;
+      padding: 0.75rem 1.4rem 0.75rem 1rem;
+      font-family: var(--font-ui); font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+      animation: vibeEntrance 1s 2s ease both, vibePulse 2.5s 3.5s ease-in-out infinite;
+      transition: transform 0.2s, background 0.2s, padding 0.3s;
+    }
+    #vibe-btn:hover { background: var(--primary2); transform: translateY(-2px) scale(1.03); }
+    #vibe-btn.playing { padding: 0.75rem 1.2rem; }
+
+    .vibe-icon {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; transition: background 0.2s;
+      position: relative;
+    }
+    #vibe-btn:hover .vibe-icon { background: rgba(255,255,255,0.25); }
+
+    /* Sound wave bars (shown when playing) */
+    .sound-bars {
+      display: none; align-items: flex-end; gap: 2px; height: 16px;
+    }
+    #vibe-btn.playing .sound-bars { display: flex; }
+    #vibe-btn.playing .play-arrow { display: none; }
+    .sound-bars span {
+      width: 3px; background: currentColor; border-radius: 2px;
+      animation: soundBar 0.8s ease-in-out infinite alternate;
+    }
+    .sound-bars span:nth-child(1) { height: 6px;  animation-delay: 0s; }
+    .sound-bars span:nth-child(2) { height: 12px; animation-delay: 0.15s; }
+    .sound-bars span:nth-child(3) { height: 9px;  animation-delay: 0.3s; }
+    .sound-bars span:nth-child(4) { height: 14px; animation-delay: 0.1s; }
+    .sound-bars span:nth-child(5) { height: 7px;  animation-delay: 0.25s; }
+
+    .vibe-label { white-space: nowrap; }
+    #vibe-btn.playing .vibe-label::after { content: ''; }
+
+    @keyframes vibeEntrance {
+      from { opacity: 0; transform: translateY(20px) scale(0.9); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    @keyframes vibePulse {
+      0%, 100% { box-shadow: 0 4px 24px rgba(0,0,0,0.4), 0 0 0 0 rgba(var(--pulse-color, 167,25,48), 0.4); }
+      50%       { box-shadow: 0 4px 24px rgba(0,0,0,0.4), 0 0 0 10px rgba(var(--pulse-color, 167,25,48), 0); }
+    }
+    body[data-brand="taj"]  #vibe-btn { --pulse-color: 167,25,48; }
+    body[data-brand="taj2"] #vibe-btn { --pulse-color: 232,200,64; }
+    @keyframes soundBar {
+      from { transform: scaleY(0.4); }
+      to   { transform: scaleY(1); }
+    }
+
+    @media (max-width: 600px) {
+      #vibe-btn { bottom: 1.2rem; right: 1.2rem; padding: 0.65rem 1rem 0.65rem 0.8rem; font-size: 0.66rem; }
+      #vibe-btn .vibe-label { display: none; }
+      #vibe-btn { padding: 0.75rem; border-radius: 50%; }
+      .vibe-icon { width: 28px; height: 28px; }
+    }
+
     @media (prefers-reduced-motion: reduce) {
       .hero-inner > * { animation: none; opacity: 1; }
       .reveal { opacity: 1; transform: none; transition: none; }
@@ -1005,6 +1071,19 @@
   </div>
 </footer>
 
+<!-- FLOATING PLAY BUTTON -->
+<button id="vibe-btn" onclick="triggerVibe()" aria-label="Play the vibe">
+  <div class="vibe-icon">
+    <svg class="play-arrow" width="12" height="14" viewBox="0 0 12 14" fill="currentColor">
+      <path d="M0 0 L12 7 L0 14 Z"/>
+    </svg>
+    <div class="sound-bars">
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+  </div>
+  <span class="vibe-label" id="vibe-label">Play the Vibe</span>
+</button>
+
 <script>
 const BRANDS = {
   taj: {
@@ -1124,6 +1203,15 @@ function switchBrand(brand) {
   if (brand === 'taj') sel.value = 'Tajmahallic — Signature';
   if (brand === 'taj2') sel.value = "Today's Another Journey — Everyday";
 
+  // Reset vibe button on brand switch
+  const vibeBtn = document.getElementById('vibe-btn');
+  const vibeLabel = document.getElementById('vibe-label');
+  if (vibeBtn) {
+    vibeBtn.classList.remove('playing');
+    vibeBtn.onclick = triggerVibe;
+  }
+  if (vibeLabel) vibeLabel.textContent = 'Play the Vibe';
+
   // Swap Spotify players
   const playerTaj  = document.getElementById('player-taj');
   const playerTaj2 = document.getElementById('player-taj2');
@@ -1189,6 +1277,33 @@ function submitForm(e) {
 
   document.getElementById('order-form').style.display = 'none';
   document.getElementById('form-success').classList.add('show');
+}
+
+function triggerVibe() {
+  // Scroll to the player section
+  document.getElementById('vibes').scrollIntoView({ behavior: 'smooth' });
+
+  // Swap the iframe src to include autoplay=1
+  setTimeout(() => {
+    const brand = document.body.getAttribute('data-brand');
+    const playerId = brand === 'taj2' ? 'player-taj2' : 'player-taj';
+    const iframe = document.querySelector(`#${playerId} iframe`);
+    if (iframe) {
+      const src = iframe.src;
+      if (!src.includes('autoplay=1')) {
+        iframe.src = src + (src.includes('?') ? '&' : '?') + 'autoplay=1';
+      }
+    }
+    // Update button to playing state
+    const btn = document.getElementById('vibe-btn');
+    btn.classList.add('playing');
+    document.getElementById('vibe-label').textContent = 'Now Playing';
+    btn.onclick = scrollToPlayer;
+  }, 600);
+}
+
+function scrollToPlayer() {
+  document.getElementById('vibes').scrollIntoView({ behavior: 'smooth' });
 }
 
 function toggleMenu() {

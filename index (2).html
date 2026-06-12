@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tajmahallic & Today's Another Journey — Custom Apparel · Atlanta, GA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Space+Grotesk:wght@300;400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet" />
+
+  <style>
+    :root { --transition-speed: 0.5s; }
+
+    /* TAJMAHALLIC — Signature / Premium */
+    body[data-brand="taj"] {
+      --bg:       #0E1525;
+      --bg2:      #090F1C;
+      --surface:  #131D32;
+      --primary:  #A71930;
+      --primary2: #D42741;
+      --accent:   #C9984A;
+      --text:     #F0E8D0;
+      --muted:    #7A6A52;
+      --border:   rgba(167,25,48,0.28);
+      --nav-bg:   rgba(68,10,24,0.97);
+      --cta-text: #F0E8D0;
+      --font-display: 'Cinzel', serif;
+      --font-body:    'Cormorant Garamond', serif;
+      --font-ui:      'Space Grotesk', sans-serif;
+    }
+
+    /* TODAY'S ANOTHER JOURNEY — Accessible / Bold */
+    body[data-brand="taj2"] {
+      --bg:       #0C0C0C;
+      --bg2:      #080808;
+      --surface:  #161616;
+      --primary:  #E8C840;
+      --primary2: #F5DC60;
+      --accent:   #FF5733;
+      --text:     #F5F5F5;
+      --muted:    #777;
+      --border:   rgba(232,200,64,0.25);
+      --nav-bg:   rgba(8,8,8,0.98);
+      --cta-text: #0C0C0C;
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-body:    'Space Grotesk', sans-serif;
+      --font-ui:      'Space Grotesk', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-ui);
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      transition: background var(--transition-speed) ease, color var(--transition-speed) ease;
+    }
+
+    /* BRAND GATE */
+    #brand-gate {
+      position: fixed; inset: 0; z-index: 1000;
+      background: #050508;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; padding: 2rem;
+      transition: opacity 0.7s ease, visibility 0.7s ease;
+    }
+    #brand-gate.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+
+    .gate-eyebrow {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.66rem; letter-spacing: 0.32em; color: #444;
+      text-transform: uppercase; margin-bottom: 2.5rem;
+    }
+    .gate-question {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(0.9rem, 2.2vw, 1.3rem);
+      letter-spacing: 0.1em; color: #888;
+      text-transform: uppercase; margin-bottom: 3rem; text-align: center;
+    }
+    .gate-cards {
+      display: flex; gap: 0; max-width: 860px; width: 100%;
+      flex-wrap: wrap; justify-content: center;
+    }
+    .gate-card {
+      flex: 1; min-width: 260px; max-width: 430px;
+      padding: 3rem 2.5rem; cursor: pointer; position: relative; overflow: hidden;
+      transition: transform 0.3s; text-align: center; background: #0D0D16;
+    }
+    .gate-card:first-child { border-right: 1px solid #1a1a1a; }
+    .gate-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      transform: scaleX(0); transition: transform 0.4s;
+    }
+    .gate-card:hover { transform: translateY(-4px); }
+    .gate-card:hover::before { transform: scaleX(1); }
+    .gate-card[data-pick="taj"]::before { background: linear-gradient(90deg,#A71930,#D42741); }
+    .gate-card[data-pick="taj2"]::before { background: #E8C840; }
+
+    .gate-brand-name {
+      display: block; margin-bottom: 0.8rem;
+    }
+    .gate-card[data-pick="taj"] .gate-brand-name {
+      font-family: 'Cinzel', serif; color: #F0E8D0; font-weight: 700; font-size: 1.9rem; letter-spacing: 0.1em;
+    }
+    .gate-card[data-pick="taj2"] .gate-brand-name {
+      font-family: 'Bebas Neue', sans-serif; color: #F5F5F5; font-size: 2.6rem; letter-spacing: 0.14em;
+    }
+    .gate-tagline {
+      line-height: 1.65; margin-bottom: 1.8rem;
+    }
+    .gate-card[data-pick="taj"] .gate-tagline {
+      font-family: 'Cormorant Garamond', serif; font-style: italic; color: #5a4a38; font-size: 1.05rem;
+    }
+    .gate-card[data-pick="taj2"] .gate-tagline {
+      font-family: 'Space Grotesk', sans-serif; color: #555; font-size: 0.85rem;
+    }
+    .gate-pill {
+      display: inline-block; padding: 0.3rem 0.9rem;
+      font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
+      border: 1px solid; font-family: 'Space Grotesk', sans-serif; margin-bottom: 1.8rem;
+    }
+    .gate-card[data-pick="taj"] .gate-pill { border-color: rgba(167,25,48,0.5); color: #A71930; }
+    .gate-card[data-pick="taj2"] .gate-pill { border-color: rgba(232,200,64,0.4); color: #E8C840; }
+
+    .gate-cta {
+      display: inline-block; padding: 0.85rem 2rem;
+      font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase;
+      font-family: 'Space Grotesk', sans-serif; font-weight: 700; cursor: pointer;
+      border: none; transition: opacity 0.2s, transform 0.2s;
+    }
+    .gate-cta:hover { opacity: 0.85; transform: translateY(-1px); }
+    .gate-card[data-pick="taj"] .gate-cta { background: #A71930; color: #F0E8D0; }
+    .gate-card[data-pick="taj2"] .gate-cta { background: #E8C840; color: #0C0C0C; }
+
+    /* BRAND BAR */
+    .brand-bar {
+      background: var(--bg2); border-bottom: 1px solid var(--border);
+      padding: 0.45rem 2rem; display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.66rem; letter-spacing: 0.16em; color: var(--muted);
+      font-family: var(--font-ui); position: relative; z-index: 200;
+      transition: background 0.5s, border-color 0.5s;
+    }
+    .brand-bar-left { display: flex; gap: 1.4rem; align-items: center; }
+    .brand-bar a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .brand-bar a:hover { color: var(--primary); }
+    .brand-switcher { display: flex; gap: 2px; }
+    .brand-switch-btn {
+      padding: 0.28rem 0.85rem; font-size: 0.6rem; letter-spacing: 0.14em;
+      text-transform: uppercase; font-family: var(--font-ui); cursor: pointer;
+      border: 1px solid transparent; background: transparent; color: var(--muted);
+      transition: all 0.3s; font-weight: 500;
+    }
+    .brand-switch-btn.active { border-color: var(--primary); color: var(--primary); }
+    .brand-switch-btn:hover:not(.active) { color: var(--text); border-color: var(--border); }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--nav-bg); backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      padding: 0.85rem 2rem;
+      display: flex; justify-content: space-between; align-items: center;
+      transition: background 0.5s, border-color 0.5s;
+    }
+    .nav-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .nav-logo { width: 38px; height: 38px; flex-shrink: 0; }
+    .nav-wordmark { font-size: 0.95rem; letter-spacing: 0.2em; font-weight: 700; transition: font-family 0.3s; }
+    body[data-brand="taj"] .nav-wordmark { font-family: 'Cinzel', serif; color: #A71930; }
+    body[data-brand="taj"] .nav-wordmark span { color: var(--text); }
+    body[data-brand="taj2"] .nav-wordmark { font-family: 'Bebas Neue', sans-serif; font-size: 1.25rem; color: var(--primary); letter-spacing: 0.22em; }
+    body[data-brand="taj2"] .nav-wordmark span { color: var(--text); }
+
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.7rem; letter-spacing: 0.14em; color: var(--text);
+      text-decoration: none; text-transform: uppercase; transition: color 0.2s;
+      font-family: var(--font-ui); font-weight: 500; position: relative;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -3px; left: 0; right: 0;
+      height: 1px; background: var(--primary); transform: scaleX(0); transition: transform 0.3s;
+    }
+    .nav-links a:hover { color: var(--primary); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+
+    .nav-cta {
+      background: var(--primary); color: var(--cta-text); border: none;
+      font-family: var(--font-ui); font-size: 0.68rem; letter-spacing: 0.14em;
+      padding: 0.58rem 1.4rem; cursor: pointer; text-transform: uppercase;
+      font-weight: 700; transition: background 0.25s, transform 0.2s;
+      text-decoration: none; display: inline-block;
+    }
+    .nav-cta:hover { background: var(--primary2); transform: translateY(-1px); }
+
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+    .hamburger span { width: 22px; height: 2px; background: var(--text); transition: all 0.3s; display: block; }
+
+    .mobile-menu {
+      display: flex; flex-direction: column; gap: 0;
+      position: fixed; top: 0; right: 0; bottom: 0; width: 270px;
+      background: var(--bg2); border-left: 1px solid var(--border); z-index: 999;
+      padding: 5rem 2rem 2rem;
+      transform: translateX(100%); transition: transform 0.35s ease;
+    }
+    .mobile-menu.open { transform: translateX(0); }
+    .mobile-menu a {
+      font-size: 0.95rem; letter-spacing: 0.1em; color: var(--text);
+      text-decoration: none; text-transform: uppercase; padding: 0.8rem 0;
+      border-bottom: 1px solid var(--border); font-family: var(--font-ui); font-weight: 500;
+    }
+    .mobile-close {
+      position: absolute; top: 1.2rem; right: 1.5rem; background: none; border: none;
+      color: var(--muted); font-size: 1.4rem; cursor: pointer;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 91vh; display: flex; align-items: center; justify-content: center;
+      text-align: center; padding: 5rem 2rem; position: relative; overflow: hidden;
+    }
+    body[data-brand="taj"] .hero {
+      background: radial-gradient(ellipse at 50% 65%, rgba(167,25,48,0.09) 0%, transparent 65%), var(--bg);
+    }
+    body[data-brand="taj"] .hero-arch {
+      content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+      width: 360px; height: 480px;
+      border: 1px solid rgba(167,25,48,0.07); border-radius: 50% 50% 0 0 / 20% 20% 0 0;
+      pointer-events: none;
+    }
+    body[data-brand="taj"] .hero-arch-inner {
+      position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+      width: 230px; height: 310px;
+      border: 1px solid rgba(167,25,48,0.05); border-radius: 50% 50% 0 0 / 20% 20% 0 0;
+      pointer-events: none;
+    }
+    body[data-brand="taj2"] .hero {
+      background:
+        repeating-linear-gradient(-45deg, transparent, transparent 38px, rgba(232,200,64,0.02) 38px, rgba(232,200,64,0.02) 40px),
+        var(--bg);
+    }
+
+    .hero-inner { position: relative; z-index: 2; max-width: 820px; }
+    .hero-inner > * { animation: fadeUp 0.9s ease both; }
+    .hero-inner > *:nth-child(1) { animation-delay: 0.05s; }
+    .hero-inner > *:nth-child(2) { animation-delay: 0.15s; }
+    .hero-inner > *:nth-child(3) { animation-delay: 0.25s; }
+    .hero-inner > *:nth-child(4) { animation-delay: 0.35s; }
+    .hero-inner > *:nth-child(5) { animation-delay: 0.45s; }
+    .hero-inner > *:nth-child(6) { animation-delay: 0.55s; }
+
+    .hero-eyebrow {
+      font-size: 0.64rem; letter-spacing: 0.36em; color: var(--primary);
+      text-transform: uppercase; margin-bottom: 1.8rem; font-family: var(--font-ui);
+      font-weight: 600; display: block; transition: color 0.5s;
+    }
+    .hero-emblem { margin: 0 auto 1.8rem; display: block; }
+    body[data-brand="taj"] .hero-emblem { width: 100px; height: 100px; }
+    body[data-brand="taj2"] .hero-emblem { width: 80px; height: 80px; }
+
+    .hero-title {
+      line-height: 0.9; color: var(--text); margin-bottom: 1.2rem;
+      transition: color 0.5s;
+    }
+    body[data-brand="taj"] .hero-title {
+      font-family: 'Cinzel', serif; font-size: clamp(3rem, 9vw, 6.8rem); font-weight: 700; letter-spacing: 0.07em;
+    }
+    body[data-brand="taj2"] .hero-title {
+      font-family: 'Bebas Neue', sans-serif; font-size: clamp(3.5rem, 12vw, 9rem); letter-spacing: 0.07em;
+    }
+    .hero-title .accent { color: var(--primary); transition: color 0.5s; }
+
+    .hero-sub { margin-bottom: 1rem; transition: all 0.5s; }
+    body[data-brand="taj"] .hero-sub {
+      font-family: 'Cormorant Garamond', serif; font-style: italic;
+      font-size: clamp(1rem, 2vw, 1.25rem); color: var(--muted); letter-spacing: 0.1em;
+    }
+    body[data-brand="taj2"] .hero-sub {
+      font-family: 'Space Grotesk', sans-serif; font-weight: 400;
+      font-size: 0.78rem; color: var(--muted); letter-spacing: 0.22em; text-transform: uppercase;
+    }
+    .hero-desc {
+      max-width: 500px; margin: 0 auto 2.6rem;
+      font-size: 0.87rem; line-height: 1.9; letter-spacing: 0.03em;
+      font-family: var(--font-ui); transition: color 0.5s;
+    }
+    body[data-brand="taj"] .hero-desc { color: rgba(240,232,208,0.5); }
+    body[data-brand="taj2"] .hero-desc { color: rgba(245,245,245,0.45); }
+
+    .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    .btn-primary {
+      background: var(--primary); color: var(--cta-text); border: none;
+      font-family: var(--font-ui); font-size: 0.7rem; letter-spacing: 0.16em;
+      padding: 0.95rem 2.2rem; cursor: pointer; text-transform: uppercase;
+      font-weight: 700; transition: background 0.25s, transform 0.2s;
+      text-decoration: none; display: inline-block;
+    }
+    .btn-primary:hover { background: var(--primary2); transform: translateY(-2px); }
+    .btn-ghost {
+      background: transparent; color: var(--text); border: 1px solid rgba(255,255,255,0.18);
+      font-family: var(--font-ui); font-size: 0.7rem; letter-spacing: 0.16em;
+      padding: 0.95rem 2.2rem; cursor: pointer; text-transform: uppercase;
+      font-weight: 500; transition: border-color 0.25s, color 0.25s, transform 0.2s;
+      text-decoration: none; display: inline-block;
+    }
+    .btn-ghost:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-2px); }
+
+    /* MARQUEE */
+    .marquee-strip {
+      background: var(--primary); overflow: hidden; white-space: nowrap; padding: 0.75rem 0;
+      position: relative; z-index: 1; transition: background 0.5s;
+    }
+    .marquee-track { display: inline-block; animation: marquee 28s linear infinite; }
+    .marquee-track span {
+      font-family: var(--font-ui); font-size: 0.66rem; letter-spacing: 0.24em;
+      color: var(--cta-text); text-transform: uppercase; margin-right: 2.5rem; font-weight: 700;
+    }
+
+    /* SECTIONS */
+    .section { padding: 5.5rem 0; position: relative; z-index: 1; }
+    .container { max-width: 1140px; margin: 0 auto; padding: 0 2rem; }
+    .section-label {
+      font-size: 0.62rem; letter-spacing: 0.34em; color: var(--primary);
+      text-transform: uppercase; margin-bottom: 0.7rem; font-family: var(--font-ui);
+      font-weight: 700; display: block; transition: color 0.5s;
+    }
+    .section-title {
+      letter-spacing: 0.05em; color: var(--text); line-height: 1.15; margin-bottom: 1.2rem;
+      transition: font-family 0.3s, color 0.5s;
+    }
+    body[data-brand="taj"] .section-title { font-family: 'Cinzel', serif; font-size: clamp(1.7rem, 3.2vw, 2.6rem); font-weight: 600; }
+    body[data-brand="taj2"] .section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.2rem, 4.5vw, 3.8rem); letter-spacing: 0.09em; }
+
+    .divider { width: 80px; height: 1px; background: linear-gradient(90deg, transparent, var(--primary), transparent); margin: 1.4rem 0; transition: background 0.5s; }
+    .divider-center { margin-left: auto; margin-right: auto; }
+    .divider-wide { width: 100%; height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); }
+
+    /* ABOUT */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+    .about-body {
+      font-size: 0.9rem; line-height: 1.95; color: rgba(240,232,208,0.65);
+      margin-bottom: 1.1rem; transition: font-family 0.3s, color 0.5s;
+    }
+    body[data-brand="taj"] .about-body { font-family: 'Cormorant Garamond', serif; font-size: 1.08rem; }
+    body[data-brand="taj2"] .about-body { font-family: 'Space Grotesk', sans-serif; color: rgba(245,245,245,0.55); }
+
+    .badge {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      border: 1px solid var(--primary); padding: 0.38rem 0.9rem;
+      font-size: 0.62rem; letter-spacing: 0.2em; color: var(--primary);
+      text-transform: uppercase; margin-top: 1.5rem; font-family: var(--font-ui);
+      font-weight: 600; transition: border-color 0.5s, color 0.5s;
+    }
+    .about-card {
+      border: 1px solid var(--border); padding: 2.5rem 2rem; text-align: center;
+      position: relative; background: var(--surface); transition: border-color 0.5s, background 0.5s;
+    }
+    body[data-brand="taj"] .about-card::before,
+    body[data-brand="taj"] .about-card::after {
+      content: ''; position: absolute; width: 18px; height: 18px;
+      border-color: var(--accent); border-style: solid;
+    }
+    body[data-brand="taj"] .about-card::before { top: -1px; left: -1px; border-width: 2px 0 0 2px; }
+    body[data-brand="taj"] .about-card::after  { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; }
+
+    .about-quote {
+      font-size: 1rem; line-height: 1.7; color: var(--muted);
+      margin-bottom: 1.6rem; transition: font-family 0.3s, color 0.5s;
+    }
+    body[data-brand="taj"] .about-quote { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.1rem; }
+    body[data-brand="taj2"] .about-quote { font-family: 'Space Grotesk', sans-serif; font-size: 0.87rem; }
+
+    .stats-row { display: flex; gap: 2rem; justify-content: center; margin-top: 2rem; }
+    .stat-num {
+      font-size: 2rem; color: var(--primary); font-weight: 700;
+      transition: font-family 0.3s, color 0.5s;
+    }
+    body[data-brand="taj"] .stat-num { font-family: 'Cinzel', serif; }
+    body[data-brand="taj2"] .stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem; }
+    .stat-label { font-size: 0.58rem; letter-spacing: 0.2em; color: var(--muted); text-transform: uppercase; margin-top: 0.2rem; font-family: var(--font-ui); }
+
+    /* COLLECTIONS */
+    .collections-bg { background: var(--bg2); transition: background 0.5s; }
+    .collections-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+    .col-card {
+      background: var(--surface); padding: 2.5rem 1.8rem; cursor: pointer;
+      position: relative; overflow: hidden; transition: background 0.3s;
+      border-top: 1px solid transparent;
+    }
+    .col-card:hover { background: rgba(255,255,255,0.025); border-top-color: var(--primary); }
+    .col-icon { font-size: 2rem; margin-bottom: 1rem; display: block; }
+    .col-name {
+      font-size: 0.82rem; letter-spacing: 0.12em; color: var(--text);
+      text-transform: uppercase; margin-bottom: 0.4rem; font-weight: 700;
+      transition: font-family 0.3s; font-family: var(--font-ui);
+    }
+    .col-price { font-size: 0.7rem; color: var(--primary); letter-spacing: 0.08em; margin-bottom: 0.6rem; font-weight: 600; font-family: var(--font-ui); transition: color 0.5s; }
+    .col-desc { font-size: 0.78rem; line-height: 1.7; color: var(--muted); font-family: var(--font-ui); }
+
+    /* PROCESS */
+    .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; position: relative; }
+    .process-grid::before {
+      content: ''; position: absolute; top: 1.35rem; left: 10%; right: 10%;
+      height: 1px; background: var(--border); transition: background 0.5s;
+    }
+    .step { text-align: center; padding: 0 1rem; }
+    .step-num {
+      width: 40px; height: 40px; border: 1px solid var(--primary); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.72rem; color: var(--primary);
+      margin: 0 auto 1.4rem; background: var(--bg); position: relative; z-index: 1;
+      transition: border-color 0.5s, color 0.5s, background 0.5s;
+    }
+    body[data-brand="taj"] .step-num { font-family: 'Cinzel', serif; }
+    body[data-brand="taj2"] .step-num { font-family: 'Bebas Neue', sans-serif; font-size: 1rem; }
+    .step-title { font-size: 0.78rem; letter-spacing: 0.1em; color: var(--text); margin-bottom: 0.6rem; text-transform: uppercase; font-weight: 700; font-family: var(--font-ui); }
+    .step-desc { font-size: 0.76rem; line-height: 1.7; color: var(--muted); font-family: var(--font-ui); }
+
+    /* GALLERY */
+    .gallery-grid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr;
+      grid-template-rows: 250px 250px; gap: 2px;
+    }
+    .gallery-item {
+      position: relative; overflow: hidden; cursor: pointer;
+      display: flex; align-items: flex-end; padding: 1.4rem;
+      transition: transform 0.4s;
+    }
+    .gallery-item:hover { transform: scale(1.012); }
+    .gallery-item:first-child { grid-row: span 2; }
+    .gallery-item::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.78) 0%, transparent 55%);
+    }
+    .gallery-bg-fill { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+    .gallery-icon { font-size: 5rem; opacity: 0.07; }
+    .gallery-label {
+      position: relative; z-index: 1;
+      font-size: 0.72rem; letter-spacing: 0.14em; color: #fff;
+      text-transform: uppercase; font-family: var(--font-ui); font-weight: 700;
+    }
+    .gallery-sub { font-size: 0.63rem; color: rgba(255,255,255,0.5); margin-top: 0.2rem; font-family: var(--font-ui); }
+
+    /* TESTIMONIAL */
+    .testimonial { text-align: center; }
+    .quote-mark {
+      font-family: 'Cormorant Garamond', serif; font-size: 7rem; color: var(--primary);
+      opacity: 0.18; line-height: 0.4; display: block; margin-bottom: 1.2rem;
+      transition: color 0.5s;
+    }
+    .quote-text {
+      font-size: clamp(1.1rem, 2.2vw, 1.7rem); color: var(--text);
+      max-width: 680px; margin: 0 auto; line-height: 1.7; letter-spacing: 0.02em;
+      transition: font-family 0.3s, color 0.5s;
+    }
+    body[data-brand="taj"] .quote-text { font-family: 'Cormorant Garamond', serif; font-style: italic; }
+    body[data-brand="taj2"] .quote-text { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: clamp(0.95rem, 1.8vw, 1.35rem); }
+    .quote-author { margin-top: 1.8rem; font-size: 0.66rem; letter-spacing: 0.24em; color: var(--primary); text-transform: uppercase; font-family: var(--font-ui); font-weight: 600; transition: color 0.5s; }
+
+    /* ORDER FORM */
+    .order-section {
+      padding: 5.5rem 2rem; text-align: center; position: relative;
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      transition: background 0.5s, border-color 0.5s;
+    }
+    body[data-brand="taj"] .order-section { background: linear-gradient(150deg, #14080e 0%, #0E1525 100%); }
+    body[data-brand="taj2"] .order-section { background: linear-gradient(150deg, #0f0d00 0%, #0C0C0C 100%); }
+
+    .order-title { margin-bottom: 0.7rem; color: var(--text); transition: font-family 0.3s; }
+    body[data-brand="taj"] .order-title { font-family: 'Cinzel', serif; font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 700; letter-spacing: 0.08em; }
+    body[data-brand="taj2"] .order-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.5rem, 6vw, 4.5rem); letter-spacing: 0.08em; }
+
+    .order-sub {
+      font-size: 0.88rem; line-height: 1.75; color: var(--muted);
+      max-width: 500px; margin: 0 auto 3rem; font-family: var(--font-ui);
+    }
+    body[data-brand="taj"] .order-sub { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.05rem; }
+
+    .order-form {
+      max-width: 560px; margin: 0 auto; text-align: left;
+      display: flex; flex-direction: column; gap: 0.9rem;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; }
+    .form-field { display: flex; flex-direction: column; gap: 0.35rem; }
+    .form-field label {
+      font-size: 0.61rem; letter-spacing: 0.2em; color: var(--primary);
+      text-transform: uppercase; font-family: var(--font-ui); font-weight: 700; transition: color 0.5s;
+    }
+    .form-field input, .form-field select, .form-field textarea {
+      background: rgba(0,0,0,0.35); border: 1px solid var(--border);
+      color: var(--text); padding: 0.72rem 0.9rem;
+      font-family: var(--font-ui); font-size: 0.84rem;
+      outline: none; transition: border-color 0.25s, background 0.5s;
+      width: 100%; resize: vertical; -webkit-appearance: none;
+    }
+    .form-field input:focus, .form-field select:focus, .form-field textarea:focus {
+      border-color: var(--primary); background: rgba(0,0,0,0.45);
+    }
+    .form-field select option { background: #1a1a2e; }
+    .form-submit {
+      background: var(--primary); color: var(--cta-text); border: none;
+      font-family: var(--font-ui); font-size: 0.7rem; letter-spacing: 0.18em;
+      padding: 1.05rem 2.5rem; cursor: pointer; text-transform: uppercase;
+      font-weight: 700; transition: background 0.25s, transform 0.2s;
+      width: 100%; margin-top: 0.4rem;
+    }
+    .form-submit:hover { background: var(--primary2); transform: translateY(-1px); }
+    .form-note { font-size: 0.7rem; color: var(--muted); text-align: center; margin-top: 0.5rem; font-family: var(--font-ui); }
+    .form-note a { color: var(--primary); text-decoration: none; }
+    .form-success {
+      display: none; text-align: center; padding: 2rem;
+      border: 1px solid var(--primary); color: var(--text);
+      font-family: var(--font-ui); max-width: 560px; margin: 0 auto;
+    }
+    .form-success.show { display: block; }
+    .form-success .success-icon { font-size: 2rem; display: block; margin-bottom: 0.8rem; }
+
+    /* FOOTER */
+    footer {
+      background: var(--bg2); border-top: 1px solid var(--border);
+      padding: 4rem 2rem 2rem; transition: background 0.5s, border-color 0.5s;
+    }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+    .footer-brand-word {
+      font-size: 1rem; letter-spacing: 0.2em; color: var(--primary);
+      margin-bottom: 0.5rem; font-weight: 700; transition: font-family 0.3s, color 0.5s;
+    }
+    body[data-brand="taj"] .footer-brand-word { font-family: 'Cinzel', serif; }
+    body[data-brand="taj2"] .footer-brand-word { font-family: 'Bebas Neue', sans-serif; font-size: 1.25rem; letter-spacing: 0.22em; }
+    .footer-tagline { font-size: 0.85rem; line-height: 1.7; color: var(--muted); margin-bottom: 0.4rem; transition: font-family 0.3s; }
+    body[data-brand="taj"] .footer-tagline { font-family: 'Cormorant Garamond', serif; font-style: italic; }
+    body[data-brand="taj2"] .footer-tagline { font-family: 'Space Grotesk', sans-serif; font-size: 0.8rem; }
+    .footer-location { font-size: 0.66rem; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 1.4rem; font-family: var(--font-ui); }
+    .footer-socials { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .social-btn {
+      width: 34px; height: 34px; border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--muted); text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .social-btn:hover { border-color: var(--primary); color: var(--primary); }
+    .social-btn svg { width: 14px; height: 14px; }
+    .footer-col-title { font-family: var(--font-ui); font-size: 0.68rem; letter-spacing: 0.2em; color: var(--text); text-transform: uppercase; margin-bottom: 1.1rem; font-weight: 700; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
+    .footer-links a { font-size: 0.76rem; color: var(--muted); text-decoration: none; transition: color 0.2s; font-family: var(--font-ui); }
+    .footer-links a:hover { color: var(--primary); }
+    .footer-bottom {
+      border-top: 1px solid var(--border); padding-top: 1.4rem;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;
+      font-size: 0.64rem; color: var(--muted); letter-spacing: 0.07em; font-family: var(--font-ui);
+    }
+    .footer-stamp { color: var(--primary); font-weight: 700; letter-spacing: 0.18em; font-size: 0.62rem; transition: color 0.5s; }
+    body[data-brand="taj"] .footer-stamp { font-family: 'Cinzel', serif; }
+    body[data-brand="taj2"] .footer-stamp { font-family: 'Bebas Neue', sans-serif; font-size: 0.8rem; }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero-inner > * { animation: none; opacity: 1; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .collections-grid { grid-template-columns: 1fr 1fr; }
+      .process-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+      .process-grid::before { display: none; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 200px 200px; }
+      .gallery-item:first-child { grid-row: span 1; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .nav-cta { display: none; }
+      .form-row { grid-template-columns: 1fr; }
+      .gate-cards { flex-direction: column; max-width: 400px; }
+      .gate-card:first-child { border-right: none; border-bottom: 1px solid #1a1a1a; }
+    }
+    @media (max-width: 600px) {
+      .collections-grid { grid-template-columns: 1fr; }
+      .process-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
+      .gallery-item { min-height: 200px; }
+      .gallery-item:first-child { min-height: 250px; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .brand-bar { flex-direction: column; gap: 0.4rem; text-align: center; }
+    }
+  </style>
+</head>
+<body data-brand="taj">
+
+<!-- BRAND GATE -->
+<div id="brand-gate">
+  <span class="gate-eyebrow">Atlanta, GA · Black-Owned · Custom Apparel</span>
+  <p class="gate-question">Which collection speaks to you?</p>
+  <div class="gate-cards">
+    <div class="gate-card" data-pick="taj" onclick="selectBrand('taj')">
+      <span class="gate-brand-name">TAJMAHALLIC</span>
+      <p class="gate-tagline">Signature luxury streetwear. Every piece is a monument to who you are.</p>
+      <span class="gate-pill">Signature Collection</span><br/>
+      <button class="gate-cta">Enter</button>
+    </div>
+    <div class="gate-card" data-pick="taj2" onclick="selectBrand('taj2')">
+      <span class="gate-brand-name">TODAY'S ANOTHER JOURNEY</span>
+      <p class="gate-tagline">Bold, accessible streetwear. Custom-made for every day and every budget.</p>
+      <span class="gate-pill">Everyday Collection</span><br/>
+      <button class="gate-cta">Enter</button>
+    </div>
+  </div>
+</div>
+
+<!-- BRAND BAR -->
+<div class="brand-bar">
+  <div class="brand-bar-left">
+    <span>Black-Owned · Atlanta, GA</span>
+    <a href="https://www.instagram.com/tajmahallicapparel/" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.facebook.com/profile.php?id=100087296873162" target="_blank" rel="noopener">Facebook</a>
+    <a href="mailto:sirtajreid@gmail.com">Email</a>
+  </div>
+  <div class="brand-switcher">
+    <button class="brand-switch-btn active" id="btn-taj" onclick="switchBrand('taj')">Tajmahallic</button>
+    <button class="brand-switch-btn" id="btn-taj2" onclick="switchBrand('taj2')">Today's Another Journey</button>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="#">
+    <svg class="nav-logo" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg" fill="none">
+      <defs>
+        <linearGradient id="lg-nav" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#A71930"/>
+          <stop offset="100%" stop-color="#D42741"/>
+        </linearGradient>
+      </defs>
+      <path d="M30 42 L88 42 L88 56 L67 56 L67 112 L51 112 L51 56 L30 56Z" fill="url(#lg-nav)"/>
+      <path d="M84 42 L128 42 L128 56 L113 56 L113 94 C113 109 99 114 84 114 L80 114 L80 100 L84 100 C91 100 97 95 97 85 L97 56 L84 56Z" fill="url(#lg-nav)"/>
+      <path d="M79 28 L106 122 L89 122 L83 96 L55 96 L49 122 L32 122Z M77 50 L58 83 L76 83Z" fill="#fff"/>
+    </svg>
+    <div class="nav-wordmark" id="nav-wordmark">TAJ<span>MAHALLIC</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">Our Story</a></li>
+    <li><a href="#collections">Collections</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#order">Order</a></li>
+  </ul>
+  <a href="#order" class="nav-cta">Commission Now</a>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu">
+  <button class="mobile-close" onclick="toggleMenu()">✕</button>
+  <a href="#about" onclick="toggleMenu()">Our Story</a>
+  <a href="#collections" onclick="toggleMenu()">Collections</a>
+  <a href="#process" onclick="toggleMenu()">Process</a>
+  <a href="#gallery" onclick="toggleMenu()">Gallery</a>
+  <a href="#order" onclick="toggleMenu()">Commission Now</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-arch" id="hero-arch"></div>
+  <div class="hero-arch-inner" id="hero-arch-inner"></div>
+  <div class="hero-inner">
+    <span class="hero-eyebrow" id="hero-eyebrow">Black-Owned · Atlanta, GA · Est. 2022</span>
+    <svg class="hero-emblem" id="hero-emblem" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg" fill="none">
+      <defs>
+        <linearGradient id="lg-hero" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#A71930"/>
+          <stop offset="100%" stop-color="#D42741"/>
+        </linearGradient>
+        <filter id="glow-hero">
+          <feDropShadow dx="0" dy="0" stdDeviation="10" flood-color="rgba(167,25,48,0.35)"/>
+        </filter>
+      </defs>
+      <path d="M30 42 L88 42 L88 56 L67 56 L67 112 L51 112 L51 56 L30 56Z" fill="url(#lg-hero)" filter="url(#glow-hero)"/>
+      <path d="M84 42 L128 42 L128 56 L113 56 L113 94 C113 109 99 114 84 114 L80 114 L80 100 L84 100 C91 100 97 95 97 85 L97 56 L84 56Z" fill="url(#lg-hero)" filter="url(#glow-hero)"/>
+      <path d="M79 28 L106 122 L89 122 L83 96 L55 96 L49 122 L32 122Z M77 50 L58 83 L76 83Z" fill="#fff"/>
+    </svg>
+    <h1 class="hero-title" id="hero-title">TAJ<span class="accent">MAHALLIC</span></h1>
+    <p class="hero-sub" id="hero-sub">Today's Another Journey</p>
+    <p class="hero-desc" id="hero-desc">Modern urban streetwear built on the belief that style is a statement of who you are. Every custom piece is a monument to your story.</p>
+    <div class="hero-btns">
+      <a class="btn-primary" href="#order">Commission a Piece</a>
+      <a class="btn-ghost" href="#collections">Explore Collections</a>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-strip">
+  <div class="marquee-track" id="marquee-track">
+    <span>Custom Apparel</span><span>✦</span>
+    <span>Wear Your Purpose</span><span>✦</span>
+    <span>Express Your Culture</span><span>✦</span>
+    <span>Live Your Journey</span><span>✦</span>
+    <span>Black-Owned Atlanta</span><span>✦</span>
+    <span>Today's Another Journey</span><span>✦</span>
+    <span>Custom Apparel</span><span>✦</span>
+    <span>Wear Your Purpose</span><span>✦</span>
+    <span>Express Your Culture</span><span>✦</span>
+    <span>Live Your Journey</span><span>✦</span>
+    <span>Black-Owned Atlanta</span><span>✦</span>
+    <span>Today's Another Journey</span><span>✦</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div>
+        <span class="section-label reveal">Our Story</span>
+        <h2 class="section-title reveal" id="about-title">Built on the Belief That<br/><em style="color:var(--primary);font-family:'Cormorant Garamond',serif;font-style:italic;">Style Is a Statement</em></h2>
+        <div class="divider reveal"></div>
+        <p class="about-body reveal" id="about-p1">Taj Mahallic Apparel was born from the meaning of the name <em>Taj</em> — a crown, a new journey. The brand embodies resilience, progress, and the audacity to stand out.</p>
+        <p class="about-body reveal" id="about-p2">Rooted in Atlanta's culture and driven by creativity, we blend comfort, style, and meaning into every custom design. From signature luxury pieces to everyday streetwear, we build what you imagine.</p>
+        <div class="badge reveal">✦ Black-Owned · Atlanta, GA</div>
+      </div>
+      <div class="reveal">
+        <div class="about-card">
+          <p class="about-quote" id="about-quote">"Wear your purpose. Express your culture. Live your journey."</p>
+          <div style="font-family:var(--font-ui);font-size:0.62rem;letter-spacing:0.26em;color:var(--primary);text-transform:uppercase;margin-bottom:0;" id="about-badge-text">TAJ MAHALLIC APPAREL</div>
+          <div class="stats-row">
+            <div style="text-align:center;">
+              <div class="stat-num">100%</div>
+              <div class="stat-label">Custom</div>
+            </div>
+            <div style="text-align:center;">
+              <div class="stat-num">ATL</div>
+              <div class="stat-label">Based</div>
+            </div>
+            <div style="text-align:center;">
+              <div class="stat-num">✦</div>
+              <div class="stat-label">Black-Owned</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider-wide"></div>
+
+<!-- COLLECTIONS -->
+<section class="section collections-bg" id="collections">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:3rem;">
+      <span class="section-label reveal">What We Create</span>
+      <h2 class="section-title reveal" style="margin:0 auto;">Collections</h2>
+    </div>
+    <div class="collections-grid reveal" id="collections-grid"></div>
+  </div>
+</section>
+
+<div class="divider-wide"></div>
+
+<!-- PROCESS -->
+<section class="section" id="process">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:4rem;">
+      <span class="section-label reveal">How It Works</span>
+      <h2 class="section-title reveal">The Commission Process</h2>
+    </div>
+    <div class="process-grid">
+      <div class="step reveal">
+        <div class="step-num">01</div>
+        <div class="step-title">Reach Out</div>
+        <p class="step-desc">Fill out the order form below or DM us on Instagram. Share your vision and any references you love.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">02</div>
+        <div class="step-title">Design</div>
+        <p class="step-desc">We craft custom design concepts around your idea. You give feedback until it's exactly right.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">03</div>
+        <div class="step-title">Approve</div>
+        <p class="step-desc">Final sign-off with a production mockup. You see every detail before we print — no surprises.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">04</div>
+        <div class="step-title">Delivered</div>
+        <p class="step-desc">Your piece ships tracked and insured. Worldwide delivery, quality guaranteed on every order.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="section" id="gallery" style="padding-top:0;">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:2.5rem;">
+      <span class="section-label reveal">The Work</span>
+      <h2 class="section-title reveal">Featured Pieces</h2>
+    </div>
+    <div class="gallery-grid reveal">
+      <div class="gallery-item" style="background:linear-gradient(135deg,#0d1628,#1a2444);">
+        <div class="gallery-bg-fill"><span class="gallery-icon">👑</span></div>
+        <div><div class="gallery-label">The Crown Series</div><div class="gallery-sub">Signature Streetwear</div></div>
+      </div>
+      <div class="gallery-item" style="background:linear-gradient(135deg,#0d1a18,#182820);">
+        <div class="gallery-bg-fill"><span class="gallery-icon">👕</span></div>
+        <div><div class="gallery-label">Culture Tee</div><div class="gallery-sub">Custom Apparel</div></div>
+      </div>
+      <div class="gallery-item" style="background:linear-gradient(135deg,#1a1208,#2a1e10);">
+        <div class="gallery-bg-fill"><span class="gallery-icon">⚜️</span></div>
+        <div><div class="gallery-label">House of Gold</div><div class="gallery-sub">Brand Merch</div></div>
+      </div>
+      <div class="gallery-item" style="background:linear-gradient(135deg,#14081a,#22102e);">
+        <div class="gallery-bg-fill"><span class="gallery-icon">🎨</span></div>
+        <div><div class="gallery-label">Bespoke Art</div><div class="gallery-sub">Custom Commission</div></div>
+      </div>
+      <div class="gallery-item" style="background:linear-gradient(135deg,#0c1420,#14202e);">
+        <div class="gallery-bg-fill"><span class="gallery-icon">🧢</span></div>
+        <div><div class="gallery-label">Street Crown</div><div class="gallery-sub">Headwear Drop</div></div>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:1.5rem;font-size:0.72rem;color:var(--muted);font-family:var(--font-ui);">
+      Add your real product photos by replacing the gallery items with &lt;img&gt; tags
+    </p>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section class="section testimonial" style="background:var(--bg2);transition:background 0.5s;">
+  <div class="container">
+    <div class="divider divider-center reveal"></div>
+    <span class="quote-mark reveal">"</span>
+    <p class="quote-text reveal" id="quote-text">Taj Mahallic didn't just make me a hoodie. They built me a piece of art that people stop me on the street about. There is nothing else like this.</p>
+    <p class="quote-author reveal" id="quote-author">— Customer, Atlanta</p>
+    <div class="divider divider-center reveal" style="margin-top:2.5rem;"></div>
+  </div>
+</section>
+
+<!-- ORDER FORM -->
+<section class="order-section" id="order">
+  <h2 class="order-title reveal" id="order-title">Your Vision. Our Obsession.</h2>
+  <p class="order-sub reveal" id="order-sub">Every commission starts with a conversation. Tell us what you're envisioning and we'll make it happen.</p>
+
+  <form class="order-form reveal" id="order-form" onsubmit="submitForm(event)">
+    <div class="form-row">
+      <div class="form-field">
+        <label for="f-name">Your Name</label>
+        <input type="text" id="f-name" name="name" placeholder="First & Last" required />
+      </div>
+      <div class="form-field">
+        <label for="f-email">Email Address</label>
+        <input type="email" id="f-email" name="email" placeholder="you@email.com" required />
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-field">
+        <label for="f-brand">Collection</label>
+        <select id="f-brand" name="brand" required>
+          <option value="">Select a collection...</option>
+          <option value="Tajmahallic — Signature">Tajmahallic — Signature</option>
+          <option value="Today's Another Journey — Everyday">Today's Another Journey — Everyday</option>
+          <option value="Both / Not sure yet">Both / Not sure yet</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label for="f-type">Piece Type</label>
+        <select id="f-type" name="type" required>
+          <option value="">Select type...</option>
+          <option>Tee / Hoodie</option>
+          <option>Headwear (Hat / Cap)</option>
+          <option>Bespoke Full Design</option>
+          <option>Brand Merch Package</option>
+          <option>Gift Collection</option>
+          <option>Limited Drop / Other</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-field">
+        <label for="f-qty">Quantity</label>
+        <input type="number" id="f-qty" name="qty" placeholder="e.g. 5" min="1" />
+      </div>
+      <div class="form-field">
+        <label for="f-budget">Budget Range</label>
+        <select id="f-budget" name="budget">
+          <option value="">Flexible / Not sure</option>
+          <option>Under $50</option>
+          <option>$50 – $150</option>
+          <option>$150 – $300</option>
+          <option>$300 – $500</option>
+          <option>$500+</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-field">
+      <label for="f-vision">Describe Your Vision</label>
+      <textarea id="f-vision" name="vision" rows="4" placeholder="Colors, design ideas, references, anything on your mind..." required></textarea>
+    </div>
+    <button type="submit" class="form-submit">Send Commission Request →</button>
+    <p class="form-note">We reply within 24–48 hours · <a href="https://www.instagram.com/tajmahallicapparel/" target="_blank">or DM us on Instagram</a> for faster response</p>
+  </form>
+
+  <div class="form-success" id="form-success">
+    <span class="success-icon">✦</span>
+    <p style="font-size:1.05rem;font-weight:700;margin-bottom:0.5rem;color:var(--text);">Request Sent!</p>
+    <p style="color:var(--muted);font-size:0.84rem;">We'll be in touch within 48 hours. You can also DM us on Instagram for a faster response.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-word" id="footer-brand-word">TAJMAHALLIC</div>
+        <p class="footer-tagline" id="footer-tagline">"Wear your purpose.<br/>Express your culture.<br/>Live your journey."</p>
+        <p class="footer-location">📍 Atlanta, GA &nbsp;·&nbsp; ✦ Black-Owned</p>
+        <div class="footer-socials">
+          <a href="https://www.instagram.com/tajmahallicapparel/" class="social-btn" aria-label="Instagram" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="https://www.facebook.com/profile.php?id=100087296873162" class="social-btn" aria-label="Facebook" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a href="mailto:sirtajreid@gmail.com" class="social-btn" aria-label="Email">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Shop</div>
+        <ul class="footer-links">
+          <li><a href="#collections">Signature Tees</a></li>
+          <li><a href="#collections">Headwear</a></li>
+          <li><a href="#collections">Bespoke Designs</a></li>
+          <li><a href="#collections">Brand Merch</a></li>
+          <li><a href="#collections">Limited Drops</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Commission</div>
+        <ul class="footer-links">
+          <li><a href="#process">How It Works</a></li>
+          <li><a href="#order">Start a Commission</a></li>
+          <li><a href="#about">Our Story</a></li>
+          <li><a href="mailto:sirtajreid@gmail.com">Email Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Connect</div>
+        <ul class="footer-links">
+          <li><a href="https://www.instagram.com/tajmahallicapparel/" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://www.facebook.com/profile.php?id=100087296873162" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="mailto:sirtajreid@gmail.com">sirtajreid@gmail.com</a></li>
+          <li><a href="#order">Wholesale Inquiries</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Taj Mahallic Apparel. All rights reserved.</span>
+      <span class="footer-stamp" id="footer-stamp">✦ TODAY'S ANOTHER JOURNEY ✦</span>
+      <span>Atlanta, GA · Black-Owned</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const BRANDS = {
+  taj: {
+    navWordmark: 'TAJ<span>MAHALLIC</span>',
+    heroTitle: 'TAJ<span class="accent">MAHALLIC</span>',
+    heroSub: "Today's Another Journey",
+    heroDesc: "Modern urban streetwear built on the belief that style is a statement of who you are. Every custom piece is a monument to your story.",
+    heroEyebrow: "Black-Owned · Atlanta, GA · Est. 2022",
+    aboutTitle: 'Built on the Belief That<br/><em style="color:var(--primary);font-family:\'Cormorant Garamond\',serif;font-style:italic;">Style Is a Statement</em>',
+    aboutP1: "Taj Mahallic Apparel was born from the meaning of the name <em>Taj</em> — a crown, a new journey. The brand embodies resilience, progress, and the audacity to stand out.",
+    aboutP2: "Rooted in Atlanta's culture and driven by creativity, we blend comfort, style, and meaning into every custom design. From signature luxury pieces to everyday streetwear, we build what you imagine.",
+    aboutQuote: '"Wear your purpose. Express your culture. Live your journey."',
+    aboutBadge: "TAJ MAHALLIC APPAREL",
+    orderTitle: "Your Vision. Our Obsession.",
+    orderSub: "Every commission starts with a conversation. Tell us what you're envisioning and we'll build something extraordinary.",
+    quoteText: "Taj Mahallic didn't just make me a hoodie. They built me a piece of art that people stop me on the street about. There is nothing else like this.",
+    quoteAuthor: "— Customer, Atlanta",
+    footerBrand: "TAJMAHALLIC",
+    footerTagline: '"Wear your purpose.<br/>Express your culture.<br/>Live your journey."',
+    footerStamp: "✦ TODAY'S ANOTHER JOURNEY ✦",
+    collections: [
+      { icon: "👕", name: "Signature Tees", price: "Custom pricing", desc: "Premium streetwear tees and hoodies with your custom design. Boutique-quality sourcing on every drop." },
+      { icon: "🧢", name: "Headwear", price: "Custom pricing", desc: "Custom caps and hats embroidered or printed to perfection. Your logo, your vision, your crown." },
+      { icon: "🎨", name: "Bespoke Designs", price: "Custom pricing", desc: "Fully custom artwork from concept to print. Bring us your idea and we'll build it from scratch." },
+      { icon: "🎁", name: "Gift Collections", price: "Custom pricing", desc: "Curated custom gift sets for events and milestones, in our signature packaging." },
+      { icon: "⚜️", name: "Brand Merch", price: "Custom pricing", desc: "Launch your brand with premium merch. Available for businesses, teams, and creators." },
+      { icon: "👑", name: "Limited Drops", price: "Custom pricing", desc: "Exclusive seasonal pieces inspired by culture, heritage, and the streets of Atlanta." }
+    ]
+  },
+  taj2: {
+    navWordmark: "TODAY'S<span> JOURNEY</span>",
+    heroTitle: "TODAY'S<span class='accent'> ANOTHER</span><br/>JOURNEY",
+    heroSub: "CUSTOM APPAREL · ATLANTA, GA",
+    heroDesc: "Bold, accessible streetwear built for every day. Custom designs made to fit your budget — without compromising on quality or style.",
+    heroEyebrow: "Everyday Collection · Black-Owned · Atlanta, GA",
+    aboutTitle: "Affordable Doesn't Mean Ordinary",
+    aboutP1: "Today's Another Journey is the everyday arm of the Taj Mahallic family. Same creative focus, same Atlanta roots — priced so everyone can walk with intention.",
+    aboutP2: "Whether you're starting a brand, repping your crew, or just want a clean custom fit without the luxury price tag, TAJ makes it happen. Every day is another chance to look the part.",
+    aboutQuote: '"Every day you step out is a flex. Dress like you mean it."',
+    aboutBadge: "TODAY'S ANOTHER JOURNEY",
+    orderTitle: "Let's Build Your Look",
+    orderSub: "Budget-friendly, custom-made, shipped to you. Fill out the form and we'll get started.",
+    quoteText: "Got my whole squad fitted for our event through TAJ. Everyone was asking where we got them. Best money I spent all year.",
+    quoteAuthor: "— Customer, Atlanta",
+    footerBrand: "TODAY'S ANOTHER JOURNEY",
+    footerTagline: '"Every day is another journey.<br/>Dress like you mean it."',
+    footerStamp: "TAJMAHALLIC FAMILY · ATL",
+    collections: [
+      { icon: "👕", name: "Custom Tees", price: "Starting at $25", desc: "Classic custom tees with your design. Clean prints, quality blanks, priced right for individuals and groups." },
+      { icon: "🧢", name: "Custom Caps", price: "Starting at $20", desc: "Embroidered or printed hats for your brand or vibe. Low minimums for crews and teams." },
+      { icon: "🎨", name: "Group Orders", price: "Bulk discounts", desc: "Order for your squad, team, or event. The more you order, the better the price — always custom." },
+      { icon: "🎁", name: "Event Merch", price: "Custom pricing", desc: "Shirts, hats, and more for your event or pop-up. Quick turnaround, budget-conscious pricing." },
+      { icon: "⚜️", name: "Starter Packs", price: "Bundle pricing", desc: "Perfect for small businesses launching their brand. Tees, hats, and basics — custom, accessible." },
+      { icon: "💛", name: "Community Drops", price: "Limited runs", desc: "Seasonal pieces made for and by the community. Atlanta culture in every thread." }
+    ]
+  }
+};
+
+function selectBrand(brand) {
+  document.getElementById('brand-gate').classList.add('hidden');
+  switchBrand(brand);
+}
+
+function switchBrand(brand) {
+  document.body.setAttribute('data-brand', brand);
+  const d = BRANDS[brand];
+  const q = id => document.getElementById(id);
+
+  document.querySelectorAll('.brand-switch-btn').forEach(b => b.classList.remove('active'));
+  q('btn-' + brand).classList.add('active');
+
+  q('nav-wordmark').innerHTML = d.navWordmark;
+  q('hero-eyebrow').textContent = d.heroEyebrow;
+  q('hero-title').innerHTML = d.heroTitle;
+  q('hero-sub').textContent = d.heroSub;
+  q('hero-desc').textContent = d.heroDesc;
+  q('about-title').innerHTML = d.aboutTitle;
+  q('about-p1').innerHTML = d.aboutP1;
+  q('about-p2').innerHTML = d.aboutP2;
+  q('about-quote').textContent = d.aboutQuote;
+  q('about-badge-text').textContent = d.aboutBadge;
+  q('quote-text').textContent = d.quoteText;
+  q('quote-author').textContent = d.quoteAuthor;
+  q('order-title').textContent = d.orderTitle;
+  q('order-sub').textContent = d.orderSub;
+  q('footer-brand-word').textContent = d.footerBrand;
+  q('footer-tagline').innerHTML = d.footerTagline;
+  q('footer-stamp').textContent = d.footerStamp;
+
+  q('collections-grid').innerHTML = d.collections.map(c => `
+    <div class="col-card">
+      <span class="col-icon">${c.icon}</span>
+      <div class="col-name">${c.name}</div>
+      <div class="col-price">${c.price}</div>
+      <p class="col-desc">${c.desc}</p>
+    </div>
+  `).join('');
+
+  // Pre-select collection in form
+  const sel = q('f-brand');
+  if (brand === 'taj') sel.value = 'Tajmahallic — Signature';
+  if (brand === 'taj2') sel.value = "Today's Another Journey — Everyday";
+}
+
+function submitForm(e) {
+  e.preventDefault();
+  const name   = document.getElementById('f-name').value;
+  const email  = document.getElementById('f-email').value;
+  const brand  = document.getElementById('f-brand').value;
+  const type   = document.getElementById('f-type').value;
+  const qty    = document.getElementById('f-qty').value;
+  const budget = document.getElementById('f-budget').value;
+  const vision = document.getElementById('f-vision').value;
+
+  const subject = encodeURIComponent(`Commission Request — ${brand}`);
+  const body = encodeURIComponent(
+    `Name: ${name}\nEmail: ${email}\n\nCollection: ${brand}\nPiece Type: ${type}\nQuantity: ${qty || 'Not specified'}\nBudget: ${budget || 'Flexible'}\n\nVision:\n${vision}`
+  );
+  window.location.href = `mailto:sirtajreid@gmail.com?subject=${subject}&body=${body}`;
+
+  document.getElementById('order-form').style.display = 'none';
+  document.getElementById('form-success').classList.add('show');
+}
+
+function toggleMenu() {
+  document.getElementById('mobile-menu').classList.toggle('open');
+}
+
+// Scroll reveal
+const io = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 65);
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+// Init
+switchBrand('taj');
+document.getElementById('brand-gate').style.display = 'flex';
+</script>
+</body>
+</html>

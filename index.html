@@ -632,16 +632,42 @@
 <!-- NAV -->
 <nav>
   <a class="nav-brand" href="#">
-    <svg class="nav-logo" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg" fill="none">
+    <!-- Tajmahallic nav logo: crown/T mark (placeholder until lion is ready) -->
+    <svg class="nav-logo" id="nav-logo-taj" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg" fill="none">
       <defs>
-        <linearGradient id="lg-nav" x1="0%" y1="0%" x2="100%" y2="100%">
+        <linearGradient id="lg-nav-taj" x1="0%" y1="0%" x2="100%" y2="100%">
           <stop offset="0%" stop-color="#A71930"/>
           <stop offset="100%" stop-color="#D42741"/>
         </linearGradient>
       </defs>
-      <path d="M30 42 L88 42 L88 56 L67 56 L67 112 L51 112 L51 56 L30 56Z" fill="url(#lg-nav)"/>
-      <path d="M84 42 L128 42 L128 56 L113 56 L113 94 C113 109 99 114 84 114 L80 114 L80 100 L84 100 C91 100 97 95 97 85 L97 56 L84 56Z" fill="url(#lg-nav)"/>
-      <path d="M79 28 L106 122 L89 122 L83 96 L55 96 L49 122 L32 122Z M77 50 L58 83 L76 83Z" fill="#fff"/>
+      <!-- Crown shape -->
+      <path d="M20 110 L20 75 L45 95 L80 40 L115 95 L140 75 L140 110 Z" fill="url(#lg-nav-taj)"/>
+      <rect x="16" y="110" width="128" height="16" rx="2" fill="url(#lg-nav-taj)"/>
+      <!-- Crown jewels -->
+      <circle cx="80" cy="40" r="7" fill="#C9984A"/>
+      <circle cx="20" cy="75" r="5" fill="#C9984A"/>
+      <circle cx="140" cy="75" r="5" fill="#C9984A"/>
+    </svg>
+    <!-- TAJ Monogram nav logo for Today's Another Journey -->
+    <svg class="nav-logo" id="nav-logo-taj2" style="display:none;" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <rect x="8" y="8" width="184" height="184" stroke="#E8C840" stroke-width="5" fill="none"/>
+      <rect x="20" y="20" width="160" height="160" stroke="#E8C840" stroke-width="1.5" fill="none" opacity="0.35"/>
+      <!-- T bar -->
+      <rect x="35" y="40" width="130" height="17" fill="#E8C840"/>
+      <!-- T stem -->
+      <rect x="91.5" y="40" width="17" height="65" fill="#E8C840"/>
+      <!-- A left leg -->
+      <polygon points="42,160 64,90 75,90 56,160" fill="#E8C840"/>
+      <!-- A right leg -->
+      <polygon points="158,160 136,90 125,90 144,160" fill="#E8C840"/>
+      <!-- A crossbar -->
+      <rect x="68" y="120" width="64" height="13" fill="#E8C840"/>
+      <!-- J top -->
+      <rect x="98" y="60" width="46" height="13" fill="#E8C840"/>
+      <!-- J vertical -->
+      <rect x="130" y="60" width="14" height="68" fill="#E8C840"/>
+      <!-- J hook -->
+      <path d="M98 128 Q98 155 130 155 Q144 155 144 142" stroke="#E8C840" stroke-width="14" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
     <div class="nav-wordmark" id="nav-wordmark">TAJ<span>MAHALLIC</span></div>
   </a>
@@ -649,7 +675,7 @@
     <li><a href="#about">Our Story</a></li>
     <li><a href="#collections">Collections</a></li>
     <li><a href="#process">Process</a></li>
-    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
     <li><a href="#order">Order</a></li>
   </ul>
   <a href="#order" class="nav-cta">Commission Now</a>
@@ -664,7 +690,7 @@
   <a href="#about" onclick="toggleMenu()">Our Story</a>
   <a href="#collections" onclick="toggleMenu()">Collections</a>
   <a href="#process" onclick="toggleMenu()">Process</a>
-  <a href="#gallery" onclick="toggleMenu()">Gallery</a>
+  <a href="gallery.html" onclick="toggleMenu()">Gallery</a>
   <a href="#order" onclick="toggleMenu()">Commission Now</a>
 </div>
 
@@ -674,19 +700,55 @@
   <div class="hero-arch-inner" id="hero-arch-inner"></div>
   <div class="hero-inner">
     <span class="hero-eyebrow" id="hero-eyebrow">Black-Owned · Atlanta, GA · Est. 2022</span>
-    <svg class="hero-emblem" id="hero-emblem" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg" fill="none">
+    <!-- Tajmahallic hero: Crown (lion placeholder) -->
+    <svg class="hero-emblem" id="hero-emblem-taj" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" fill="none">
       <defs>
-        <linearGradient id="lg-hero" x1="0%" y1="0%" x2="100%" y2="100%">
+        <linearGradient id="lg-hero-taj" x1="0%" y1="0%" x2="100%" y2="100%">
           <stop offset="0%" stop-color="#A71930"/>
           <stop offset="100%" stop-color="#D42741"/>
         </linearGradient>
-        <filter id="glow-hero">
-          <feDropShadow dx="0" dy="0" stdDeviation="10" flood-color="rgba(167,25,48,0.35)"/>
+        <filter id="glow-taj">
+          <feDropShadow dx="0" dy="0" stdDeviation="12" flood-color="rgba(167,25,48,0.4)"/>
         </filter>
       </defs>
-      <path d="M30 42 L88 42 L88 56 L67 56 L67 112 L51 112 L51 56 L30 56Z" fill="url(#lg-hero)" filter="url(#glow-hero)"/>
-      <path d="M84 42 L128 42 L128 56 L113 56 L113 94 C113 109 99 114 84 114 L80 114 L80 100 L84 100 C91 100 97 95 97 85 L97 56 L84 56Z" fill="url(#lg-hero)" filter="url(#glow-hero)"/>
-      <path d="M79 28 L106 122 L89 122 L83 96 L55 96 L49 122 L32 122Z M77 50 L58 83 L76 83Z" fill="#fff"/>
+      <!-- Crown body -->
+      <path d="M25 135 L25 90 L60 115 L100 48 L140 115 L175 90 L175 135 Z" fill="url(#lg-hero-taj)" filter="url(#glow-taj)"/>
+      <rect x="20" y="135" width="160" height="20" rx="3" fill="url(#lg-hero-taj)" filter="url(#glow-taj)"/>
+      <!-- Crown jewels -->
+      <circle cx="100" cy="48" r="9" fill="#C9984A"/>
+      <circle cx="25" cy="90" r="7" fill="#C9984A"/>
+      <circle cx="175" cy="90" r="7" fill="#C9984A"/>
+      <!-- Base gems row -->
+      <circle cx="60" cy="143" r="5" fill="#C9984A" opacity="0.8"/>
+      <circle cx="100" cy="143" r="5" fill="#C9984A" opacity="0.8"/>
+      <circle cx="140" cy="143" r="5" fill="#C9984A" opacity="0.8"/>
+    </svg>
+    <!-- Today's Another Journey hero: TAJ Monogram matching the shorts -->
+    <svg class="hero-emblem" id="hero-emblem-taj2" style="display:none;" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <filter id="glow-taj2">
+          <feDropShadow dx="0" dy="0" stdDeviation="10" flood-color="rgba(232,200,64,0.5)"/>
+        </filter>
+      </defs>
+      <!-- Outer border double-line -->
+      <rect x="8" y="8" width="184" height="184" stroke="#E8C840" stroke-width="5" fill="none" filter="url(#glow-taj2)"/>
+      <rect x="18" y="18" width="164" height="164" stroke="#E8C840" stroke-width="1.5" fill="none" opacity="0.4"/>
+      <!-- T horizontal bar -->
+      <rect x="32" y="38" width="136" height="18" fill="#E8C840"/>
+      <!-- T vertical stem -->
+      <rect x="91" y="38" width="18" height="68" fill="#E8C840"/>
+      <!-- A left leg -->
+      <polygon points="38,162 62,88 74,88 53,162" fill="#E8C840"/>
+      <!-- A right leg -->
+      <polygon points="162,162 138,88 126,88 147,162" fill="#E8C840"/>
+      <!-- A crossbar -->
+      <rect x="66" y="120" width="68" height="14" fill="#E8C840"/>
+      <!-- J top bar -->
+      <rect x="96" y="58" width="48" height="14" fill="#E8C840"/>
+      <!-- J vertical -->
+      <rect x="130" y="58" width="14" height="72" fill="#E8C840"/>
+      <!-- J hook curve -->
+      <path d="M96 130 Q96 158 130 158 Q144 158 144 144" stroke="#E8C840" stroke-width="14" fill="none" stroke-linecap="round"/>
     </svg>
     <h1 class="hero-title" id="hero-title">TAJ<span class="accent">MAHALLIC</span></h1>
     <p class="hero-sub" id="hero-sub">Today's Another Journey</p>
@@ -807,30 +869,30 @@
       <h2 class="section-title reveal">Featured Pieces</h2>
     </div>
     <div class="gallery-grid reveal">
-      <div class="gallery-item" style="background:linear-gradient(135deg,#0d1628,#1a2444);">
-        <div class="gallery-bg-fill"><span class="gallery-icon">👑</span></div>
-        <div><div class="gallery-label">The Crown Series</div><div class="gallery-sub">Signature Streetwear</div></div>
+      <div class="gallery-item" style="background:#111;">
+        <img src="images/gallery/IMG_0455.PNG" alt="Today's Another Journey shorts" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"/>
+        <div><div class="gallery-label">TAJ Shorts</div><div class="gallery-sub">Today's Another Journey</div></div>
       </div>
-      <div class="gallery-item" style="background:linear-gradient(135deg,#0d1a18,#182820);">
-        <div class="gallery-bg-fill"><span class="gallery-icon">👕</span></div>
-        <div><div class="gallery-label">Culture Tee</div><div class="gallery-sub">Custom Apparel</div></div>
+      <div class="gallery-item" style="background:#111;">
+        <img src="images/gallery/IMG_0456.PNG" alt="Custom apparel" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"/>
+        <div><div class="gallery-label">Custom Apparel</div><div class="gallery-sub">Signature Collection</div></div>
       </div>
-      <div class="gallery-item" style="background:linear-gradient(135deg,#1a1208,#2a1e10);">
-        <div class="gallery-bg-fill"><span class="gallery-icon">⚜️</span></div>
-        <div><div class="gallery-label">House of Gold</div><div class="gallery-sub">Brand Merch</div></div>
+      <div class="gallery-item" style="background:#111;">
+        <img src="images/gallery/IMG_1208.PNG" alt="Headwear" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"/>
+        <div><div class="gallery-label">Headwear</div><div class="gallery-sub">Custom Design</div></div>
       </div>
-      <div class="gallery-item" style="background:linear-gradient(135deg,#14081a,#22102e);">
-        <div class="gallery-bg-fill"><span class="gallery-icon">🎨</span></div>
+      <div class="gallery-item" style="background:#111;">
+        <img src="images/gallery/IMG_0879.JPEG" alt="Lifestyle" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"/>
+        <div><div class="gallery-label">Lifestyle</div><div class="gallery-sub">Brand Aesthetic</div></div>
+      </div>
+      <div class="gallery-item" style="background:#111;">
+        <img src="images/gallery/IMG_4153.PNG" alt="Custom commission" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"/>
         <div><div class="gallery-label">Bespoke Art</div><div class="gallery-sub">Custom Commission</div></div>
       </div>
-      <div class="gallery-item" style="background:linear-gradient(135deg,#0c1420,#14202e);">
-        <div class="gallery-bg-fill"><span class="gallery-icon">🧢</span></div>
-        <div><div class="gallery-label">Street Crown</div><div class="gallery-sub">Headwear Drop</div></div>
-      </div>
     </div>
-    <p style="text-align:center;margin-top:1.5rem;font-size:0.72rem;color:var(--muted);font-family:var(--font-ui);">
-      Add your real product photos by replacing the gallery items with &lt;img&gt; tags
-    </p>
+    <div style="text-align:center;margin-top:2.5rem;">
+      <a href="gallery.html" class="btn-ghost reveal" style="display:inline-block;">View Full Gallery →</a>
+    </div>
   </div>
 </section>
 
@@ -1045,6 +1107,15 @@ function switchBrand(brand) {
   q('btn-' + brand).classList.add('active');
 
   q('nav-wordmark').innerHTML = d.navWordmark;
+
+  // Swap nav logos
+  q('nav-logo-taj').style.display  = (brand === 'taj')  ? '' : 'none';
+  q('nav-logo-taj2').style.display = (brand === 'taj2') ? '' : 'none';
+
+  // Swap hero emblems
+  q('hero-emblem-taj').style.display  = (brand === 'taj')  ? '' : 'none';
+  q('hero-emblem-taj2').style.display = (brand === 'taj2') ? '' : 'none';
+
   q('hero-eyebrow').textContent = d.heroEyebrow;
   q('hero-title').innerHTML = d.heroTitle;
   q('hero-sub').textContent = d.heroSub;

@@ -834,30 +834,11 @@
       <span class="section-label reveal">The Work</span>
       <h2 class="section-title reveal">Featured Pieces</h2>
     </div>
-    <div class="gallery-grid reveal">
-      <div class="gallery-item" style="background:#111;">
-        <img src="images/gallery/IMG_0455.PNG" alt="Today's Another Journey shorts" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"/>
-        <div><div class="gallery-label">TAJ Shorts</div><div class="gallery-sub">Today's Another Journey</div></div>
-      </div>
-      <div class="gallery-item" style="background:#111;">
-        <img src="images/gallery/IMG_0456.PNG" alt="Custom apparel" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"/>
-        <div><div class="gallery-label">Custom Apparel</div><div class="gallery-sub">Signature Collection</div></div>
-      </div>
-      <div class="gallery-item" style="background:#111;">
-        <img src="images/gallery/IMG_1208.PNG" alt="Headwear" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"/>
-        <div><div class="gallery-label">Headwear</div><div class="gallery-sub">Custom Design</div></div>
-      </div>
-      <div class="gallery-item" style="background:#111;">
-        <img src="images/gallery/IMG_0879.JPEG" alt="Lifestyle" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"/>
-        <div><div class="gallery-label">Lifestyle</div><div class="gallery-sub">Brand Aesthetic</div></div>
-      </div>
-      <div class="gallery-item" style="background:#111;">
-        <img src="images/gallery/IMG_4153.PNG" alt="Custom commission" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"/>
-        <div><div class="gallery-label">Bespoke Art</div><div class="gallery-sub">Custom Commission</div></div>
-      </div>
+    <div class="gallery-grid reveal" id="home-gallery-grid">
+      <!-- Populated by JS based on active brand -->
     </div>
     <div style="text-align:center;margin-top:2.5rem;">
-      <a href="gallery.html" class="btn-ghost reveal" style="display:inline-block;">View Full Gallery →</a>
+      <a href="gallery.html" class="btn-ghost reveal" id="gallery-link" style="display:inline-block;">View Full Gallery →</a>
     </div>
   </div>
 </section>
@@ -1124,6 +1105,33 @@ function switchBrand(brand) {
   document.querySelectorAll('a[href="gallery.html"], a[href^="gallery.html"]').forEach(a => {
     a.href = `gallery.html?brand=${brand}`;
   });
+
+  // Update homepage gallery preview with brand-specific images
+  const PREVIEW = {
+    taj: [
+      { src: 'images/taj/IMG_2975.PNG',                                        label: 'Custom Design',   sub: 'Bespoke Collection' },
+      { src: 'images/taj/IMG_3915.JPG',                                        label: 'Lifestyle',       sub: 'Brand Aesthetic' },
+      { src: 'images/taj/IMG_4343.PNG',                                        label: 'Headwear',        sub: 'Crown Series' },
+      { src: 'images/taj/IMG_2264.PNG',                                        label: 'Signature Tee',   sub: 'Tajmahallic' },
+      { src: 'images/taj/IMG_5533.PNG',                                        label: 'Custom Apparel',  sub: 'Tajmahallic' },
+    ],
+    taj2: [
+      { src: 'images/Taj2/IMG_0455.PNG',  label: 'TAJ Shorts',     sub: "Today's Another Journey" },
+      { src: 'images/Taj2/IMG_0456.PNG',  label: 'Custom Apparel', sub: 'Everyday Collection' },
+      { src: 'images/Taj2/IMG_1208.PNG',  label: 'Headwear',       sub: 'Custom Design' },
+      { src: 'images/Taj2/IMG_0879.JPEG', label: 'Lifestyle',      sub: 'Brand Aesthetic' },
+      { src: 'images/Taj2/IMG_4153.PNG',  label: 'Bespoke Art',    sub: 'Custom Commission' },
+    ]
+  };
+  const grid = document.getElementById('home-gallery-grid');
+  if (grid) {
+    grid.innerHTML = PREVIEW[brand].map(p => `
+      <div class="gallery-item" style="background:#111;">
+        <img src="${p.src}" alt="${p.label}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"/>
+        <div><div class="gallery-label">${p.label}</div><div class="gallery-sub">${p.sub}</div></div>
+      </div>
+    `).join('');
+  }
 }
 
 function submitForm(e) {

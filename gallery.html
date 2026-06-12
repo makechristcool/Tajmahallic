@@ -8,7 +8,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Space+Grotesk:wght@300;400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet" />
 
   <style>
-    :root {
+    /* TAJMAHALLIC — Signature */
+    body[data-brand="taj"] {
       --bg:       #0E1525;
       --bg2:      #090F1C;
       --surface:  #131D32;
@@ -19,6 +20,22 @@
       --muted:    #7A6A52;
       --border:   rgba(167,25,48,0.28);
       --nav-bg:   rgba(68,10,24,0.97);
+      --cta-text: #F0E8D0;
+    }
+
+    /* TODAY'S ANOTHER JOURNEY — Everyday */
+    body[data-brand="taj2"] {
+      --bg:       #0C0C0C;
+      --bg2:      #080808;
+      --surface:  #161616;
+      --primary:  #E8C840;
+      --primary2: #F5DC60;
+      --accent:   #FF5733;
+      --text:     #F5F5F5;
+      --muted:    #777;
+      --border:   rgba(232,200,64,0.25);
+      --nav-bg:   rgba(8,8,8,0.98);
+      --cta-text: #0C0C0C;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -40,9 +57,11 @@
       display: flex; justify-content: space-between; align-items: center;
     }
     .nav-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
-    .nav-logo { width: 38px; height: 38px; flex-shrink: 0; }
-    .nav-wordmark { font-family: 'Cinzel', serif; font-size: 0.95rem; letter-spacing: 0.2em; font-weight: 700; color: #A71930; }
-    .nav-wordmark span { color: var(--text); }
+    .nav-logo { width: 44px; height: 44px; flex-shrink: 0; object-fit: contain; }
+    body[data-brand="taj"] .nav-wordmark { font-family: 'Cinzel', serif; font-size: 0.95rem; letter-spacing: 0.2em; font-weight: 700; color: #A71930; }
+    body[data-brand="taj"] .nav-wordmark span { color: var(--text); }
+    body[data-brand="taj2"] .nav-wordmark { font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; letter-spacing: 0.22em; font-weight: 400; color: var(--primary); }
+    body[data-brand="taj2"] .nav-wordmark span { color: var(--text); }
     .nav-links { display: flex; gap: 2rem; list-style: none; }
     .nav-links a {
       font-size: 0.7rem; letter-spacing: 0.14em; color: var(--text);
@@ -84,22 +103,21 @@
     /* HERO */
     .gallery-hero {
       padding: 5rem 2rem 3.5rem; text-align: center;
-      background: radial-gradient(ellipse at 50% 60%, rgba(167,25,48,0.07) 0%, transparent 65%), var(--bg);
       border-bottom: 1px solid var(--border);
+      transition: background 0.5s;
     }
+    body[data-brand="taj"] .gallery-hero { background: radial-gradient(ellipse at 50% 60%, rgba(167,25,48,0.07) 0%, transparent 65%), var(--bg); }
+    body[data-brand="taj2"] .gallery-hero { background: repeating-linear-gradient(-45deg, transparent, transparent 38px, rgba(232,200,64,0.02) 38px, rgba(232,200,64,0.02) 40px), var(--bg); }
+
     .gallery-hero .eyebrow {
       font-size: 0.62rem; letter-spacing: 0.36em; color: var(--primary);
       text-transform: uppercase; margin-bottom: 1rem; font-weight: 600; display: block;
     }
-    .gallery-hero h1 {
-      font-family: 'Cinzel', serif; font-size: clamp(2.5rem, 6vw, 5rem);
-      font-weight: 700; letter-spacing: 0.08em; margin-bottom: 0.8rem; line-height: 1;
-    }
+    body[data-brand="taj"] .gallery-hero h1 { font-family: 'Cinzel', serif; font-size: clamp(2.5rem, 6vw, 5rem); font-weight: 700; letter-spacing: 0.08em; margin-bottom: 0.8rem; line-height: 1; }
+    body[data-brand="taj2"] .gallery-hero h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3rem, 8vw, 6.5rem); letter-spacing: 0.1em; margin-bottom: 0.8rem; line-height: 1; }
     .gallery-hero h1 span { color: var(--primary); }
-    .gallery-hero p {
-      font-family: 'Cormorant Garamond', serif; font-style: italic;
-      font-size: 1.1rem; color: var(--muted); max-width: 480px; margin: 0 auto;
-    }
+    body[data-brand="taj"] .gallery-hero p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.1rem; color: var(--muted); max-width: 480px; margin: 0 auto; }
+    body[data-brand="taj2"] .gallery-hero p { font-family: 'Space Grotesk', sans-serif; font-size: 0.85rem; letter-spacing: 0.1em; color: var(--muted); max-width: 480px; margin: 0 auto; text-transform: uppercase; }
 
     /* FILTERS */
     .filter-bar {
@@ -107,6 +125,7 @@
       border-bottom: 1px solid var(--border);
       display: flex; justify-content: space-between; align-items: center;
       flex-wrap: wrap; gap: 1rem; position: sticky; top: 64px; z-index: 50;
+      transition: background 0.5s, border-color 0.5s;
     }
     .filter-pills { display: flex; gap: 0.4rem; flex-wrap: wrap; }
     .filter-pill {
@@ -115,8 +134,8 @@
       border: 1px solid var(--border); background: transparent; color: var(--muted);
       cursor: pointer; transition: all 0.25s;
     }
-    .filter-pill.active { border-color: var(--primary); color: var(--primary); background: rgba(167,25,48,0.08); }
-    .filter-pill:hover:not(.active) { border-color: rgba(240,232,208,0.3); color: var(--text); }
+    .filter-pill.active { border-color: var(--primary); color: var(--primary); background: rgba(0,0,0,0.15); }
+    .filter-pill:hover:not(.active) { border-color: rgba(255,255,255,0.2); color: var(--text); }
     .gallery-count { font-size: 0.68rem; color: var(--muted); letter-spacing: 0.1em; }
     .gallery-count span { color: var(--primary); font-weight: 700; }
 
@@ -226,18 +245,16 @@
     /* CTA STRIP */
     .gallery-cta {
       background: var(--primary); padding: 3.5rem 2rem; text-align: center;
+      transition: background 0.5s;
     }
-    .gallery-cta h2 {
-      font-family: 'Cinzel', serif; font-size: clamp(1.5rem, 3vw, 2.4rem);
-      font-weight: 700; letter-spacing: 0.08em; color: var(--text);
-      margin-bottom: 0.8rem;
-    }
-    .gallery-cta p { font-size: 0.88rem; color: rgba(240,232,208,0.75); margin-bottom: 1.8rem; font-family: 'Space Grotesk', sans-serif; }
+    body[data-brand="taj"] .gallery-cta h2 { font-family: 'Cinzel', serif; font-size: clamp(1.5rem, 3vw, 2.4rem); font-weight: 700; letter-spacing: 0.08em; color: var(--bg); margin-bottom: 0.8rem; }
+    body[data-brand="taj2"] .gallery-cta h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2rem, 4vw, 3.2rem); letter-spacing: 0.1em; color: var(--bg); margin-bottom: 0.8rem; }
+    .gallery-cta p { font-size: 0.88rem; color: rgba(0,0,0,0.6); margin-bottom: 1.8rem; font-family: 'Space Grotesk', sans-serif; }
     .gallery-cta a {
-      display: inline-block; background: var(--text); color: var(--primary);
+      display: inline-block; background: var(--bg); color: var(--primary);
       font-family: 'Space Grotesk', sans-serif; font-size: 0.72rem; letter-spacing: 0.18em;
       padding: 0.95rem 2.5rem; text-decoration: none; text-transform: uppercase; font-weight: 700;
-      transition: background 0.2s, color 0.2s;
+      transition: background 0.2s, opacity 0.2s;
     }
     .gallery-cta a:hover { background: #fff; }
 
@@ -279,18 +296,32 @@
 
 <!-- NAV -->
 <nav>
-  <a class="nav-brand" href="index.html">
-    <img class="nav-logo" src="images/lion-logo.png" alt="Tajmahallic Apparel" style="object-fit:contain;width:44px;height:44px;"/>
-    <div class="nav-wordmark">TAJ<span>MAHALLIC</span></div>
+  <a class="nav-brand" href="index.html" id="nav-home-link">
+    <!-- Tajmahallic: lion -->
+    <img class="nav-logo" id="gal-logo-taj" src="images/lion-logo.png" alt="Tajmahallic Apparel" style="object-fit:contain;"/>
+    <!-- Today's Another Journey: TAJ monogram -->
+    <svg class="nav-logo" id="gal-logo-taj2" style="display:none;" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <rect x="8" y="8" width="184" height="184" stroke="#E8C840" stroke-width="5" fill="none"/>
+      <rect x="20" y="20" width="160" height="160" stroke="#E8C840" stroke-width="1.5" fill="none" opacity="0.35"/>
+      <rect x="35" y="40" width="130" height="17" fill="#E8C840"/>
+      <rect x="91.5" y="40" width="17" height="65" fill="#E8C840"/>
+      <polygon points="42,160 64,90 75,90 56,160" fill="#E8C840"/>
+      <polygon points="158,160 136,90 125,90 144,160" fill="#E8C840"/>
+      <rect x="68" y="120" width="64" height="13" fill="#E8C840"/>
+      <rect x="98" y="60" width="46" height="13" fill="#E8C840"/>
+      <rect x="130" y="60" width="14" height="68" fill="#E8C840"/>
+      <path d="M98 128 Q98 155 130 155 Q144 155 144 142" stroke="#E8C840" stroke-width="14" fill="none" stroke-linecap="round"/>
+    </svg>
+    <div class="nav-wordmark" id="gal-wordmark">TAJ<span>MAHALLIC</span></div>
   </a>
   <ul class="nav-links">
-    <li><a href="index.html#about">Our Story</a></li>
-    <li><a href="index.html#collections">Collections</a></li>
-    <li><a href="index.html#process">Process</a></li>
-    <li><a href="gallery.html" class="active">Gallery</a></li>
-    <li><a href="index.html#order">Order</a></li>
+    <li><a href="index.html#about" class="gal-back-link">Our Story</a></li>
+    <li><a href="index.html#collections" class="gal-back-link">Collections</a></li>
+    <li><a href="index.html#process" class="gal-back-link">Process</a></li>
+    <li><a href="gallery.html" class="active gal-self-link">Gallery</a></li>
+    <li><a href="index.html#order" class="gal-back-link">Order</a></li>
   </ul>
-  <a href="index.html#order" class="nav-cta">Commission Now</a>
+  <a href="index.html#order" class="nav-cta gal-back-link">Commission Now</a>
   <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
@@ -299,8 +330,8 @@
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobile-menu">
   <button class="mobile-close" onclick="toggleMenu()">✕</button>
-  <a href="index.html#about" onclick="toggleMenu()">Our Story</a>
-  <a href="index.html#collections" onclick="toggleMenu()">Collections</a>
+  <a href="index.html#about" class="gal-back-link" onclick="toggleMenu()">Our Story</a>
+  <a href="index.html#collections" class="gal-back-link" onclick="toggleMenu()">Collections</a>
   <a href="index.html#process" onclick="toggleMenu()">Process</a>
   <a href="gallery.html" onclick="toggleMenu()">Gallery</a>
   <a href="index.html#order" onclick="toggleMenu()">Commission Now</a>
@@ -647,7 +678,31 @@ const io = new IntersectionObserver(entries => {
 }, { threshold: 0.08 });
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-// INIT
+// INIT — read ?brand= param and apply theme
+const urlBrand = new URLSearchParams(window.location.search).get('brand') || 'taj';
+document.body.setAttribute('data-brand', urlBrand);
+
+// Swap nav logos
+document.getElementById('gal-logo-taj').style.display  = urlBrand === 'taj'  ? '' : 'none';
+document.getElementById('gal-logo-taj2').style.display = urlBrand === 'taj2' ? '' : 'none';
+
+// Update nav wordmark
+if (urlBrand === 'taj2') {
+  document.getElementById('gal-wordmark').innerHTML = "TODAY'S<span> JOURNEY</span>";
+}
+
+// Add brand param to all back-links
+document.querySelectorAll('.gal-back-link').forEach(a => {
+  a.href = a.href.replace('index.html', `index.html?brand=${urlBrand}`);
+});
+document.querySelectorAll('.gal-self-link').forEach(a => {
+  a.href = `gallery.html?brand=${urlBrand}`;
+});
+document.getElementById('nav-home-link').href = `index.html?brand=${urlBrand}`;
+
+// Update CTA link
+document.querySelector('.gallery-cta a').href = `index.html?brand=${urlBrand}#order`;
+
 filterGallery('all', document.querySelector('.filter-pill[data-filter="all"]'));
 </script>
 </body>

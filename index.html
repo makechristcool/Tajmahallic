@@ -1111,6 +1111,11 @@ function switchBrand(brand) {
   const sel = q('f-brand');
   if (brand === 'taj') sel.value = 'Tajmahallic — Signature';
   if (brand === 'taj2') sel.value = "Today's Another Journey — Everyday";
+
+  // Update all gallery.html links to carry the brand param
+  document.querySelectorAll('a[href="gallery.html"], a[href^="gallery.html"]').forEach(a => {
+    a.href = `gallery.html?brand=${brand}`;
+  });
 }
 
 function submitForm(e) {
@@ -1148,9 +1153,16 @@ const io = new IntersectionObserver((entries) => {
 }, { threshold: 0.08 });
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-// Init
-switchBrand('taj');
-document.getElementById('brand-gate').style.display = 'flex';
+// Init — respect ?brand= param if returning from gallery
+const initBrand = new URLSearchParams(window.location.search).get('brand') || null;
+if (initBrand && (initBrand === 'taj' || initBrand === 'taj2')) {
+  document.getElementById('brand-gate').style.display = 'none';
+  document.getElementById('brand-gate').classList.add('hidden');
+  switchBrand(initBrand);
+} else {
+  switchBrand('taj');
+  document.getElementById('brand-gate').style.display = 'flex';
+}
 </script>
 </body>
 </html>

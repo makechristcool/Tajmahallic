@@ -1297,7 +1297,7 @@ function triggerVibe() {
     // Update button to playing state
     const btn = document.getElementById('vibe-btn');
     btn.classList.add('playing');
-    document.getElementById('vibe-label').textContent = 'Now Playing';
+    document.getElementById('vibe-label').innerHTML = '&#x2196; Press Play';
     btn.onclick = scrollToPlayer;
   }, 600);
 }

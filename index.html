@@ -662,7 +662,8 @@
     <li><a href="#about">Our Story</a></li>
     <li><a href="#collections">Collections</a></li>
     <li><a href="#process">Process</a></li>
-    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#vibes">Vibes</a></li>
     <li><a href="#order">Order</a></li>
   </ul>
   <a href="#order" class="nav-cta">Commission Now</a>
@@ -677,7 +678,8 @@
   <a href="#about" onclick="toggleMenu()">Our Story</a>
   <a href="#collections" onclick="toggleMenu()">Collections</a>
   <a href="#process" onclick="toggleMenu()">Process</a>
-  <a href="gallery.html" onclick="toggleMenu()">Gallery</a>
+  <a href="#gallery" onclick="toggleMenu()">Gallery</a>
+  <a href="#vibes" onclick="toggleMenu()">Vibes</a>
   <a href="#order" onclick="toggleMenu()">Commission Now</a>
 </div>
 
@@ -851,6 +853,27 @@
     <p class="quote-text reveal" id="quote-text">Taj Mahallic didn't just make me a hoodie. They built me a piece of art that people stop me on the street about. There is nothing else like this.</p>
     <p class="quote-author reveal" id="quote-author">— Customer, Atlanta</p>
     <div class="divider divider-center reveal" style="margin-top:2.5rem;"></div>
+  </div>
+</section>
+
+<!-- SPOTIFY PLAYER -->
+<section class="section" id="vibes" style="padding:4rem 0;background:var(--bg);transition:background 0.5s;">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:2rem;">
+      <span class="section-label reveal">The Vibe</span>
+      <h2 class="section-title reveal" id="playlist-title">The Soundtrack</h2>
+      <p class="reveal" style="font-size:0.85rem;color:var(--muted);font-family:var(--font-ui);max-width:420px;margin:0.5rem auto 0;" id="playlist-sub">The music behind the movement. Press play and feel the energy.</p>
+    </div>
+    <div class="reveal" style="max-width:700px;margin:0 auto;border:1px solid var(--border);padding:1.5rem;background:var(--surface);transition:border-color 0.5s,background 0.5s;">
+      <!-- Tajmahallic playlist -->
+      <div id="player-taj">
+        <iframe data-testid="embed-iframe" style="border-radius:8px" src="https://open.spotify.com/embed/playlist/52Wa85aeiSvjclQP5zNXpZ?utm_source=generator&theme=0&si=d707f1fc4362408e" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+      </div>
+      <!-- Today's Another Journey playlist -->
+      <div id="player-taj2" style="display:none;">
+        <iframe data-testid="embed-iframe" style="border-radius:8px" src="https://open.spotify.com/embed/playlist/5aIgL7orMDaP6WljuhFLAM?utm_source=generator&si=6bb752d1cdf642e9" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1100,6 +1123,20 @@ function switchBrand(brand) {
   const sel = q('f-brand');
   if (brand === 'taj') sel.value = 'Tajmahallic — Signature';
   if (brand === 'taj2') sel.value = "Today's Another Journey — Everyday";
+
+  // Swap Spotify players
+  const playerTaj  = document.getElementById('player-taj');
+  const playerTaj2 = document.getElementById('player-taj2');
+  if (playerTaj)  playerTaj.style.display  = brand === 'taj'  ? '' : 'none';
+  if (playerTaj2) playerTaj2.style.display = brand === 'taj2' ? '' : 'none';
+
+  // Update playlist labels
+  const playlistTitle = document.getElementById('playlist-title');
+  const playlistSub   = document.getElementById('playlist-sub');
+  if (playlistTitle) playlistTitle.textContent = brand === 'taj' ? 'The Soundtrack' : 'The Playlist';
+  if (playlistSub)   playlistSub.textContent   = brand === 'taj'
+    ? 'The music behind the movement. Press play and feel the energy.'
+    : 'Built for the grind. Press play and stay locked in.';
 
   // Update all gallery.html links to carry the brand param
   document.querySelectorAll('a[href="gallery.html"], a[href^="gallery.html"]').forEach(a => {

@@ -612,42 +612,8 @@
       <p class="section-label reveal">The Work</p>
       <h2 class="section-title reveal">Featured Pieces</h2>
     </div>
-    <div class="showcase-grid reveal">
-      <div class="showcase-item" style="background:linear-gradient(135deg,#101A2D,#182744);">
-        <div class="showcase-bg">👑</div>
-        <div>
-          <div class="showcase-label">The Crown Series</div>
-          <div class="showcase-sub">Signature Streetwear</div>
-        </div>
-      </div>
-      <div class="showcase-item" style="background:linear-gradient(135deg,#0d1a18,#1a2820);">
-        <div class="showcase-bg">👕</div>
-        <div>
-          <div class="showcase-label">Culture Tee</div>
-          <div class="showcase-sub">Custom Apparel</div>
-        </div>
-      </div>
-      <div class="showcase-item" style="background:linear-gradient(135deg,#1a1208,#2a1e10);">
-        <div class="showcase-bg">⚜️</div>
-        <div>
-          <div class="showcase-label">House of Gold</div>
-          <div class="showcase-sub">Brand Merch</div>
-        </div>
-      </div>
-      <div class="showcase-item" style="background:linear-gradient(135deg,#16091a,#251030);">
-        <div class="showcase-bg">🎨</div>
-        <div>
-          <div class="showcase-label">Bespoke Art</div>
-          <div class="showcase-sub">Custom Commission</div>
-        </div>
-      </div>
-      <div class="showcase-item" style="background:linear-gradient(135deg,#0e1520,#162030);">
-        <div class="showcase-bg">🧢</div>
-        <div>
-          <div class="showcase-label">Street Crown</div>
-          <div class="showcase-sub">Headwear Drop</div>
-        </div>
-      </div>
+    <div class="showcase-grid reveal" id="gallery-grid">
+      <!-- Gallery items dynamically rendered here -->
     </div>
   </div>
 </section>
@@ -788,6 +754,49 @@
     });
   }, { threshold: 0.12 });
   reveals.forEach(el => observer.observe(el));
+
+  // --- Dynamic Gallery ---
+  const galleryItems = [
+    { type: 'placeholder', bg: 'linear-gradient(135deg,#101A2D,#182744)', emoji: '👑', title: 'The Crown Series', subtitle: 'Signature Streetwear' },
+    { type: 'placeholder', bg: 'linear-gradient(135deg,#0d1a18,#1a2820)', emoji: '👕', title: 'Culture Tee', subtitle: 'Custom Apparel' },
+    { type: 'placeholder', bg: 'linear-gradient(135deg,#1a1208,#2a1e10)', emoji: '⚜️', title: 'House of Gold', subtitle: 'Brand Merch' },
+    { type: 'placeholder', bg: 'linear-gradient(135deg,#16091a,#251030)', emoji: '🎨', title: 'Bespoke Art', subtitle: 'Custom Commission' },
+    { type: 'placeholder', bg: 'linear-gradient(135deg,#0e1520,#162030)', emoji: '🧢', title: 'Street Crown', subtitle: 'Headwear Drop' }
+  ];
+
+  function renderGallery() {
+    const grid = document.getElementById('gallery-grid');
+    if (!grid) return;
+
+    let html = '';
+    galleryItems.forEach(item => {
+      if (item.type === 'placeholder') {
+        html += `
+          <div class="showcase-item" style="background:${item.bg};">
+            <div class="showcase-bg">${item.emoji}</div>
+            <div>
+              <div class="showcase-label">${item.title}</div>
+              <div class="showcase-sub">${item.subtitle}</div>
+            </div>
+          </div>
+        `;
+      } else if (item.type === 'image') {
+        html += `
+          <div class="showcase-img-item">
+            <img src="${item.src}" alt="${item.title || 'Gallery Image'}" loading="lazy" />
+            <div>
+              <div class="showcase-label">${item.title || ''}</div>
+              <div class="showcase-sub">${item.subtitle || ''}</div>
+            </div>
+          </div>
+        `;
+      }
+    });
+    grid.innerHTML = html;
+  }
+
+  // Render on load
+  document.addEventListener('DOMContentLoaded', renderGallery);
 </script>
 </body>
 </html>

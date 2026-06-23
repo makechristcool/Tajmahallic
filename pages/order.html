@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Commission — TAJMAHALLIC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600;700&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+:root{--ivory:#F5EED8;--cream:#EDE3C4;--gold:#C9A84C;--gold-lt:#E2C06E;--crimson:#7A1C2E;--midnight:#4A0E1C;--ink:#2D0811;--muted:#8A7560;--border:rgba(201,168,76,0.35);}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Raleway',sans-serif;background:var(--midnight);color:var(--ivory);overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;z-index:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;opacity:0.5;}
+.topbar{background:var(--ink);border-bottom:1px solid var(--border);padding:0.5rem 2rem;display:flex;justify-content:space-between;align-items:center;font-size:0.7rem;letter-spacing:0.18em;color:var(--muted);position:relative;z-index:10;}
+.topbar a{color:var(--muted);text-decoration:none;transition:color .2s;}.topbar a:hover{color:var(--gold);}
+.topbar-socials{display:flex;gap:1.2rem;}
+nav{position:sticky;top:0;z-index:100;background:rgba(45,8,17,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0.85rem 2rem;display:flex;justify-content:space-between;align-items:center;}
+.nav-brand{display:flex;align-items:center;gap:0.9rem;text-decoration:none;}
+.nav-wordmark{font-family:'Cinzel',serif;font-size:1rem;letter-spacing:0.22em;color:var(--gold);font-weight:600;}
+.nav-links{display:flex;gap:0;list-style:none;}
+.nav-links a{font-size:0.68rem;letter-spacing:0.16em;color:var(--ivory);text-decoration:none;text-transform:uppercase;transition:color .2s;padding:0.5rem 1rem;position:relative;}
+.nav-links a:hover,.nav-links a.active{color:var(--gold);}
+.nav-links a.active::after{content:'';position:absolute;bottom:0;left:1rem;right:1rem;height:2px;background:var(--gold);}
+.nav-cta{background:var(--gold);border:1px solid var(--gold);color:var(--ink);font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.18em;padding:0.5rem 1.2rem;cursor:pointer;transition:background .25s,color .25s;text-transform:uppercase;text-decoration:none;display:inline-block;font-weight:600;}
+.nav-cta:hover{background:var(--gold-lt);}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;}
+.hamburger span{display:block;width:24px;height:2px;background:var(--gold);}
+.page-hero{padding:6rem 2rem 4rem;text-align:center;position:relative;z-index:1;background:linear-gradient(180deg,rgba(122,28,46,0.3),transparent);}
+.page-hero::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:700px;height:500px;background:radial-gradient(ellipse,rgba(201,168,76,0.1) 0%,transparent 70%);pointer-events:none;}
+.page-eyebrow{font-size:0.65rem;letter-spacing:0.4em;color:var(--gold);text-transform:uppercase;margin-bottom:1rem;}
+.page-title{font-family:'Cinzel',serif;font-size:clamp(2.5rem,6vw,4.5rem);font-weight:700;letter-spacing:0.15em;color:var(--ivory);margin-bottom:1rem;}
+.page-subtitle{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.2rem;color:var(--muted);}
+.divider{width:120px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:2rem auto;}
+.divider-wide{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0.4;}
+.order-section{padding:2rem 2rem 6rem;position:relative;z-index:1;}
+.order-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 2fr;gap:4rem;}
+.order-sidebar h3{font-family:'Cinzel',serif;font-size:1rem;letter-spacing:0.14em;color:var(--ivory);text-transform:uppercase;margin-bottom:1.2rem;}
+.contact-option{border:1px solid var(--border);padding:1.5rem;margin-bottom:1rem;display:flex;align-items:flex-start;gap:1rem;text-decoration:none;transition:background .2s;}
+.contact-option:hover{background:rgba(201,168,76,0.06);}
+.contact-option-icon{font-size:1.5rem;flex-shrink:0;}
+.contact-option-text strong{font-family:'Cinzel',serif;font-size:0.72rem;letter-spacing:0.12em;color:var(--gold);text-transform:uppercase;display:block;margin-bottom:0.3rem;}
+.contact-option-text span{font-size:0.76rem;color:var(--muted);line-height:1.5;}
+.reply-note{font-size:0.72rem;color:var(--muted);line-height:1.6;margin-top:1.5rem;padding:1rem;border-left:2px solid var(--gold);}
+/* FORM */
+.commission-form{position:relative;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem;}
+.form-group{margin-bottom:1.5rem;}
+.form-label{font-size:0.68rem;letter-spacing:0.18em;color:var(--gold);text-transform:uppercase;display:block;margin-bottom:0.5rem;font-family:'Cinzel',serif;}
+.form-input,.form-select,.form-textarea{width:100%;background:rgba(245,238,216,0.04);border:1px solid var(--border);color:var(--ivory);font-family:'Raleway',sans-serif;font-size:0.85rem;padding:0.8rem 1rem;outline:none;transition:border-color .2s;appearance:none;}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--gold);}
+.form-select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23C9A84C' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;padding-right:2.5rem;}
+.form-select option{background:var(--ink);color:var(--ivory);}
+.form-textarea{resize:vertical;min-height:140px;}
+.form-submit{background:var(--gold);color:var(--ink);font-family:'Cinzel',serif;font-size:0.72rem;letter-spacing:0.22em;padding:1rem 2.8rem;border:none;cursor:pointer;text-transform:uppercase;font-weight:600;transition:background .25s;width:100%;}
+.form-submit:hover{background:var(--gold-lt);}
+.success-msg{display:none;background:rgba(201,168,76,0.1);border:1px solid var(--gold);padding:2rem;text-align:center;margin-top:1rem;}
+.success-msg.show{display:block;}
+.success-msg h3{font-family:'Cinzel',serif;font-size:1rem;color:var(--gold);letter-spacing:0.12em;margin-bottom:0.5rem;}
+.success-msg p{color:var(--muted);font-size:0.85rem;}
+footer{background:var(--ink);border-top:1px solid var(--border);padding:3rem 2rem 1.5rem;position:relative;z-index:1;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:2rem;max-width:1180px;margin-left:auto;margin-right:auto;}
+.footer-wordmark{font-family:'Cinzel',serif;font-size:1rem;letter-spacing:0.22em;color:var(--gold);margin-bottom:0.4rem;}
+.footer-tagline{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:0.9rem;color:var(--muted);line-height:1.6;margin-bottom:0.4rem;}
+.footer-location{font-size:0.65rem;letter-spacing:0.12em;color:var(--muted);margin-bottom:1rem;}
+.footer-col-title{font-family:'Cinzel',serif;font-size:0.68rem;letter-spacing:0.22em;color:var(--ivory);text-transform:uppercase;margin-bottom:1rem;}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:0.55rem;}
+.footer-links a{font-size:0.74rem;color:var(--muted);text-decoration:none;transition:color .2s;}
+.footer-links a:hover{color:var(--gold);}
+.footer-bottom{border-top:1px solid var(--border);padding-top:1rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;font-size:0.63rem;color:var(--muted);letter-spacing:0.08em;max-width:1180px;margin:0 auto;}
+.social-btn{width:32px;height:32px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--muted);text-decoration:none;transition:border-color .2s,color .2s;}
+.social-btn:hover{border-color:var(--gold);color:var(--gold);}
+.social-btn svg{width:13px;height:13px;}
+.footer-socials{display:flex;gap:0.5rem;margin-top:0.8rem;}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.7s ease,transform 0.7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+@media(max-width:900px){.order-grid{grid-template-columns:1fr;}.form-row{grid-template-columns:1fr;}.nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--ink);flex-direction:column;border-bottom:1px solid var(--border);}.nav-links.open{display:flex;}.nav-links a{padding:0.9rem 2rem;border-bottom:1px solid rgba(201,168,76,0.1);}.hamburger{display:flex;}nav{position:relative;}.footer-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:600px){.footer-grid{grid-template-columns:1fr;}.footer-bottom{flex-direction:column;text-align:center;}.topbar{flex-direction:column;gap:0.4rem;text-align:center;}}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <span>Black-Owned · Atlanta, GA · Custom orders by request · Worldwide shipping</span>
+  <div class="topbar-socials"><a href="https://www.facebook.com/profile.php?id=100087296873162" target="_blank" rel="noopener">FB</a><a href="https://www.instagram.com/tajmahallicapparel/" target="_blank" rel="noopener">IG</a><a href="mailto:sirtajreid@gmail.com">✉</a></div>
+</div>
+<nav>
+  <a class="nav-brand" href="../index.html">
+    <svg viewBox="0 0 100 80" width="36" height="32" xmlns="http://www.w3.org/2000/svg"><g fill="#C9A84C"><rect x="5" y="4" width="90" height="14" rx="1"/><rect x="8" y="18" width="16" height="44" rx="1"/><rect x="76" y="18" width="16" height="44" rx="1"/><polygon points="24,18 40,18 50,36 60,18 76,18 76,62 60,62 60,40 50,52 40,40 40,62 24,62"/></g></svg>
+    <div class="nav-wordmark">TAJMAHALLIC</div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="story.html">Our Story</a></li><li><a href="collections.html">Collections</a></li><li><a href="process.html">Process</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="vibes.html">Vibes</a></li><li><a href="order.html" class="active">Order</a></li>
+  </ul>
+  <div style="display:flex;align-items:center;gap:1rem;"><a class="nav-cta" href="order.html">Commission Now</a><div class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')"><span></span><span></span><span></span></div></div>
+</nav>
+
+<div class="page-hero">
+  <p class="page-eyebrow">Start Here</p>
+  <h1 class="page-title">Your Vision.<br/><span style="color:var(--gold);">Our Obsession.</span></h1>
+  <p class="page-subtitle">Every commission begins with a conversation.</p>
+  <div class="divider"></div>
+</div>
+
+<section class="order-section">
+  <div class="order-grid">
+    <!-- Sidebar -->
+    <div class="reveal">
+      <h3>Get in Touch</h3>
+
+      <a class="contact-option" href="mailto:sirtajreid@gmail.com?subject=Custom Commission Inquiry">
+        <span class="contact-option-icon">✉️</span>
+        <div class="contact-option-text">
+          <strong>Email Us</strong>
+          <span>sirtajreid@gmail.com<br/>We reply within 24–48 hours.</span>
+        </div>
+      </a>
+
+      <a class="contact-option" href="https://www.instagram.com/tajmahallicapparel/" target="_blank" rel="noopener">
+        <span class="contact-option-icon">📸</span>
+        <div class="contact-option-text">
+          <strong>Instagram DM</strong>
+          <span>@tajmahallicapparel<br/>Fastest response — usually same day.</span>
+        </div>
+      </a>
+
+      <a class="contact-option" href="https://www.facebook.com/profile.php?id=100087296873162" target="_blank" rel="noopener">
+        <span class="contact-option-icon">💬</span>
+        <div class="contact-option-text">
+          <strong>Facebook Message</strong>
+          <span>Message us on Facebook for inquiries, wholesale, or partnerships.</span>
+        </div>
+      </a>
+
+      <p class="reply-note">
+        We reply to all commissions within <strong style="color:var(--ivory);">24–48 hours</strong>. For the fastest response, DM us on Instagram. Worldwide shipping available.
+      </p>
+    </div>
+
+    <!-- Form -->
+    <div class="commission-form reveal">
+      <div id="formWrap">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="name">Your Name</label>
+            <input class="form-input" id="name" type="text" placeholder="Full name"/>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="email">Email Address</label>
+            <input class="form-input" id="email" type="email" placeholder="your@email.com"/>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="collection">Collection</label>
+            <select class="form-select" id="collection">
+              <option value="">Select a collection...</option>
+              <option>Tajmahallic — Signature</option>
+              <option>Today's Another Journey — Everyday</option>
+              <option>Both / Not sure yet</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="piece">Piece Type</label>
+            <select class="form-select" id="piece">
+              <option value="">Select type...</option>
+              <option>Tee / Hoodie</option>
+              <option>Headwear (Hat / Cap)</option>
+              <option>Bespoke Full Design</option>
+              <option>Brand Merch Package</option>
+              <option>Gift Collection</option>
+              <option>Limited Drop / Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="qty">Quantity</label>
+            <input class="form-input" id="qty" type="text" placeholder="e.g. 1, 10, 50+"/>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="budget">Budget Range</label>
+            <select class="form-select" id="budget">
+              <option value="">Flexible / Not sure</option>
+              <option>Under $50</option>
+              <option>$50 – $150</option>
+              <option>$150 – $300</option>
+              <option>$300 – $500</option>
+              <option>$500+</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="vision">Describe Your Vision</label>
+          <textarea class="form-textarea" id="vision" placeholder="Tell us everything — colors, style, text, symbols, references, feel. The more detail, the better."></textarea>
+        </div>
+        <button class="form-submit" onclick="submitForm()">Send Commission Request →</button>
+        <p style="font-size:0.68rem;color:var(--muted);text-align:center;margin-top:1rem;">We reply within 24–48 hours · or <a href="https://www.instagram.com/tajmahallicapparel/" target="_blank" style="color:var(--gold);">DM us on Instagram</a> for faster response</p>
+      </div>
+      <div class="success-msg" id="successMsg">
+        <h3>✦ Request Sent!</h3>
+        <p>We'll be in touch within 48 hours. You can also DM us on Instagram for a faster response.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div><div class="footer-wordmark">TAJMAHALLIC</div><p class="footer-tagline">"Wear your purpose.<br/>Express your culture."</p><p class="footer-location">📍 Atlanta, GA · ✦ Black-Owned</p><div class="footer-socials"><a class="social-btn" href="https://www.instagram.com/tajmahallicapparel/" target="_blank" rel="noopener" aria-label="Instagram"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect height="20" rx="5" width="20" x="2" y="2"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" fill="currentColor" r="1" stroke="none"/></svg></a><a class="social-btn" href="https://www.facebook.com/profile.php?id=100087296873162" target="_blank" rel="noopener" aria-label="Facebook"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a><a class="social-btn" href="mailto:sirtajreid@gmail.com" aria-label="Email"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect height="16" rx="2" width="20" x="2" y="4"/><path d="M2 7l10 7 10-7"/></svg></a></div></div>
+    <div><div class="footer-col-title">Pages</div><ul class="footer-links"><li><a href="story.html">Our Story</a></li><li><a href="collections.html">Collections</a></li><li><a href="process.html">Process</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="vibes.html">Vibes</a></li></ul></div>
+    <div><div class="footer-col-title">Commission</div><ul class="footer-links"><li><a href="order.html">Start a Commission</a></li><li><a href="process.html">How It Works</a></li><li><a href="mailto:sirtajreid@gmail.com">Email Us</a></li></ul></div>
+    <div><div class="footer-col-title">Connect</div><ul class="footer-links"><li><a href="https://www.instagram.com/tajmahallicapparel/" target="_blank">Instagram</a></li><li><a href="https://www.facebook.com/profile.php?id=100087296873162" target="_blank">Facebook</a></li><li><a href="mailto:sirtajreid@gmail.com">sirtajreid@gmail.com</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><span>© 2025 Taj Mahallic Apparel. All rights reserved.</span><span style="color:var(--gold);font-family:'Cinzel',serif;letter-spacing:0.2em;font-size:0.6rem;">✦ TODAY'S ANOTHER JOURNEY ✦</span><span>Atlanta, GA · Black-Owned</span></div>
+</footer>
+<script>
+  function submitForm() {
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const vision = document.getElementById('vision').value;
+    if (!name || !email || !vision) { alert('Please fill in your name, email, and vision description.'); return; }
+    const collection = document.getElementById('collection').value;
+    const piece = document.getElementById('piece').value;
+    const budget = document.getElementById('budget').value;
+    const qty = document.getElementById('qty').value;
+    const subject = encodeURIComponent('Custom Commission Inquiry — Tajmahallic');
+    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nCollection: ${collection}\nPiece Type: ${piece}\nQuantity: ${qty}\nBudget: ${budget}\n\nVision:\n${vision}`);
+    window.location.href = `mailto:sirtajreid@gmail.com?subject=${subject}&body=${body}`;
+    document.getElementById('formWrap').style.display = 'none';
+    document.getElementById('successMsg').classList.add('show');
+  }
+  const reveals=document.querySelectorAll('.reveal');
+  const obs=new IntersectionObserver((entries)=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*80);obs.unobserve(e.target);}});},{threshold:0.1});
+  reveals.forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

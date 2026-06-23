@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Process — TAJMAHALLIC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600;700&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+:root{--ivory:#F5EED8;--cream:#EDE3C4;--gold:#C9A84C;--gold-lt:#E2C06E;--crimson:#7A1C2E;--midnight:#4A0E1C;--ink:#2D0811;--muted:#8A7560;--border:rgba(201,168,76,0.35);}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Raleway',sans-serif;background:var(--midnight);color:var(--ivory);overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;z-index:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;opacity:0.5;}
+.topbar{background:var(--ink);border-bottom:1px solid var(--border);padding:0.5rem 2rem;display:flex;justify-content:space-between;align-items:center;font-size:0.7rem;letter-spacing:0.18em;color:var(--muted);position:relative;z-index:10;}
+.topbar a{color:var(--muted);text-decoration:none;transition:color .2s;}.topbar a:hover{color:var(--gold);}
+.topbar-socials{display:flex;gap:1.2rem;}
+nav{position:sticky;top:0;z-index:100;background:rgba(45,8,17,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0.85rem 2rem;display:flex;justify-content:space-between;align-items:center;}
+.nav-brand{display:flex;align-items:center;gap:0.9rem;text-decoration:none;}
+.nav-wordmark{font-family:'Cinzel',serif;font-size:1rem;letter-spacing:0.22em;color:var(--gold);font-weight:600;}
+.nav-links{display:flex;gap:0;list-style:none;}
+.nav-links a{font-size:0.68rem;letter-spacing:0.16em;color:var(--ivory);text-decoration:none;text-transform:uppercase;transition:color .2s;padding:0.5rem 1rem;position:relative;}
+.nav-links a:hover,.nav-links a.active{color:var(--gold);}
+.nav-links a.active::after{content:'';position:absolute;bottom:0;left:1rem;right:1rem;height:2px;background:var(--gold);}
+.nav-cta{background:transparent;border:1px solid var(--gold);color:var(--gold);font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.18em;padding:0.5rem 1.2rem;cursor:pointer;transition:background .25s,color .25s;text-transform:uppercase;text-decoration:none;display:inline-block;}
+.nav-cta:hover{background:var(--gold);color:var(--ink);}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;}
+.hamburger span{display:block;width:24px;height:2px;background:var(--gold);}
+.page-hero{padding:6rem 2rem 4rem;text-align:center;position:relative;z-index:1;}
+.page-hero::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:600px;height:400px;background:radial-gradient(ellipse,rgba(201,168,76,0.08) 0%,transparent 70%);pointer-events:none;}
+.page-eyebrow{font-size:0.65rem;letter-spacing:0.4em;color:var(--gold);text-transform:uppercase;margin-bottom:1rem;}
+.page-title{font-family:'Cinzel',serif;font-size:clamp(2.5rem,6vw,4.5rem);font-weight:700;letter-spacing:0.15em;color:var(--ivory);margin-bottom:1rem;}
+.page-subtitle{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.2rem;color:var(--muted);}
+.divider{width:120px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:2rem auto;}
+.divider-wide{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0.4;}
+.process-section{padding:2rem 2rem 6rem;position:relative;z-index:1;}
+.process-inner{max-width:900px;margin:0 auto;}
+.process-step{display:grid;grid-template-columns:auto 1fr;gap:3rem;align-items:start;margin-bottom:4rem;padding-bottom:4rem;border-bottom:1px solid rgba(201,168,76,0.15);position:relative;}
+.process-step:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+.step-num-wrap{display:flex;flex-direction:column;align-items:center;gap:1rem;}
+.step-num{width:56px;height:56px;border:1px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Cinzel',serif;font-size:0.85rem;color:var(--gold);flex-shrink:0;background:var(--midnight);}
+.step-line{width:1px;height:100%;background:linear-gradient(to bottom,var(--gold),transparent);flex:1;min-height:80px;}
+.step-content h3{font-family:'Cinzel',serif;font-size:1.2rem;letter-spacing:0.12em;color:var(--ivory);margin-bottom:1rem;text-transform:uppercase;}
+.step-content p{font-family:'Cormorant Garamond',serif;font-size:1.1rem;line-height:1.85;color:rgba(245,238,216,0.78);margin-bottom:1rem;}
+.step-detail{background:rgba(201,168,76,0.05);border:1px solid var(--border);padding:1.2rem 1.5rem;margin-top:1rem;}
+.step-detail p{font-size:0.8rem;line-height:1.7;color:var(--muted);}
+.cta-banner{background:linear-gradient(135deg,var(--crimson),#4a0e1c);padding:5rem 2rem;text-align:center;position:relative;overflow:hidden;z-index:1;}
+.cta-banner::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23C9A84C' fill-opacity='0.05'%3E%3Cpath d='M30 0 L60 30 L30 60 L0 30Z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");}
+.cta-title{font-family:'Cinzel',serif;font-size:clamp(2rem,4vw,3rem);font-weight:700;color:var(--ivory);letter-spacing:0.1em;margin-bottom:1rem;position:relative;z-index:1;}
+.cta-sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.15rem;color:rgba(245,238,216,0.75);margin-bottom:2.5rem;position:relative;z-index:1;}
+.btn-primary{background:var(--gold);color:var(--ink);font-family:'Cinzel',serif;font-size:0.68rem;letter-spacing:0.2em;padding:0.9rem 2.2rem;border:none;cursor:pointer;text-transform:uppercase;font-weight:600;transition:background .25s;text-decoration:none;display:inline-block;position:relative;z-index:1;}
+.btn-primary:hover{background:var(--gold-lt);}
+footer{background:var(--ink);border-top:1px solid var(--border);padding:3rem 2rem 1.5rem;position:relative;z-index:1;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:2rem;max-width:1180px;margin-left:auto;margin-right:auto;}
+.footer-wordmark{font-family:'Cinzel',serif;font-size:1rem;letter-spacing:0.22em;color:var(--gold);margin-bottom:0.4rem;}
+.footer-tagline{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:0.9rem;color:var(--muted);line-height:1.6;margin-bottom:0.4rem;}
+.footer-location{font-size:0.65rem;letter-spacing:0.12em;color:var(--muted);margin-bottom:1rem;}
+.footer-col-title{font-family:'Cinzel',serif;font-size:0.68rem;letter-spacing:0.22em;color:var(--ivory);text-transform:uppercase;margin-bottom:1rem;}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:0.55rem;}
+.footer-links a{font-size:0.74rem;color:var(--muted);text-decoration:none;transition:color .2s;}
+.footer-links a:hover{color:var(--gold);}
+.footer-bottom{border-top:1px solid var(--border);padding-top:1rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;font-size:0.63rem;color:var(--muted);letter-spacing:0.08em;max-width:1180px;margin:0 auto;}
+.social-btn{width:32px;height:32px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--muted);text-decoration:none;transition:border-color .2s,color .2s;}
+.social-btn:hover{border-color:var(--gold);color:var(--gold);}
+.social-btn svg{width:13px;height:13px;}
+.footer-socials{display:flex;gap:0.5rem;margin-top:0.8rem;}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.7s ease,transform 0.7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+@media(max-width:900px){.process-step{grid-template-columns:1fr;gap:1.5rem;}.step-line{display:none;}.nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--ink);flex-direction:column;border-bottom:1px solid var(--border);}.nav-links.open{display:flex;}.nav-links a{padding:0.9rem 2rem;border-bottom:1px solid rgba(201,168,76,0.1);}.hamburger{display:flex;}nav{position:relative;}.footer-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:600px){.footer-grid{grid-template-columns:1fr;}.footer-bottom{flex-direction:column;text-align:center;}.topbar{flex-direction:column;gap:0.4rem;text-align:center;}}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <span>Black-Owned · Atlanta, GA · Custom orders by request · Worldwide shipping</span>
+  <div class="topbar-socials"><a href="https://www.facebook.com/profile.php?id=100087296873162" target="_blank" rel="noopener">FB</a><a href="https://www.instagram.com/tajmahallicapparel/" target="_blank" rel="noopener">IG</a><a href="mailto:sirtajreid@gmail.com">✉</a></div>
+</div>
+<nav>
+  <a class="nav-brand" href="../index.html">
+    <svg viewBox="0 0 100 80" width="36" height="32" xmlns="http://www.w3.org/2000/svg"><g fill="#C9A84C"><rect x="5" y="4" width="90" height="14" rx="1"/><rect x="8" y="18" width="16" height="44" rx="1"/><rect x="76" y="18" width="16" height="44" rx="1"/><polygon points="24,18 40,18 50,36 60,18 76,18 76,62 60,62 60,40 50,52 40,40 40,62 24,62"/></g></svg>
+    <div class="nav-wordmark">TAJMAHALLIC</div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="story.html">Our Story</a></li><li><a href="collections.html">Collections</a></li><li><a href="process.html" class="active">Process</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="vibes.html">Vibes</a></li><li><a href="order.html">Order</a></li>
+  </ul>
+  <div style="display:flex;align-items:center;gap:1rem;"><a class="nav-cta" href="order.html">Commission Now</a><div class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')"><span></span><span></span><span></span></div></div>
+</nav>
+
+<div class="page-hero">
+  <p class="page-eyebrow">How It Works</p>
+  <h1 class="page-title">The Commission<br/><span style="color:var(--gold);">Process</span></h1>
+  <p class="page-subtitle">From concept to creation — every step, refined.</p>
+  <div class="divider"></div>
+</div>
+
+<section class="process-section">
+  <div class="process-inner">
+
+    <div class="process-step reveal">
+      <div class="step-num-wrap">
+        <div class="step-num">01</div>
+        <div class="step-line"></div>
+      </div>
+      <div class="step-content">
+        <h3>Reach Out</h3>
+        <p>Start by contacting us via the order form, email, or Instagram DM. Tell us what you're thinking — even rough ideas are welcome. No vision is too big or too small.</p>
+        <div class="step-detail">
+          <p>📧 Email: <a href="mailto:sirtajreid@gmail.com" style="color:var(--gold);">sirtajreid@gmail.com</a><br/>
+          📱 Instagram: <a href="https://www.instagram.com/tajmahallicapparel/" target="_blank" style="color:var(--gold);">@tajmahallicapparel</a><br/>
+          Or use the <a href="order.html" style="color:var(--gold);">commission form</a> on the Order page.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="process-step reveal">
+      <div class="step-num-wrap">
+        <div class="step-num">02</div>
+        <div class="step-line"></div>
+      </div>
+      <div class="step-content">
+        <h3>Design</h3>
+        <p>We craft custom design concepts built around your idea. Share any references, color preferences, symbols, or text you want incorporated. We go back and forth until it's exactly right.</p>
+        <div class="step-detail">
+          <p>💡 Tip: The more specific you are about your vision, the faster we can nail it. Bring photos, mood boards, sketches — anything that inspires you.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="process-step reveal">
+      <div class="step-num-wrap">
+        <div class="step-num">03</div>
+        <div class="step-line"></div>
+      </div>
+      <div class="step-content">
+        <h3>Approve</h3>
+        <p>Final sign-off with a production mockup. You see every detail — placement, color, scale, typography — before we touch a single garment. No surprises, guaranteed.</p>
+        <div class="step-detail">
+          <p>✓ Full-color digital mockup<br/>✓ Unlimited revisions until you're satisfied<br/>✓ Production does not begin until you approve</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="process-step reveal">
+      <div class="step-num-wrap">
+        <div class="step-num">04</div>
+      </div>
+      <div class="step-content">
+        <h3>Delivered</h3>
+        <p>Your custom piece is produced, quality-checked, and shipped directly to you — tracked and insured. We ship worldwide, and we don't rest until the piece meets our standard.</p>
+        <div class="step-detail">
+          <p>🌍 Worldwide delivery · 📦 Tracked & insured · ⏱ Turnaround: 2–4 weeks depending on complexity</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="cta-banner">
+  <h2 class="cta-title">Ready to Start?</h2>
+  <p class="cta-sub">Every commission begins with a single message.</p>
+  <a class="btn-primary" href="order.html">Commission Now</a>
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div><div class="footer-wordmark">TAJMAHALLIC</div><p class="footer-tagline">"Wear your purpose.<br/>Express your culture."</p><p class="footer-location">📍 Atlanta, GA · ✦ Black-Owned</p><div class="footer-socials"><a class="social-btn" href="https://www.instagram.com/tajmahallicapparel/" target="_blank" rel="noopener" aria-label="Instagram"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect height="20" rx="5" width="20" x="2" y="2"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" fill="currentColor" r="1" stroke="none"/></svg></a><a class="social-btn" href="https://www.facebook.com/profile.php?id=100087296873162" target="_blank" rel="noopener" aria-label="Facebook"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a><a class="social-btn" href="mailto:sirtajreid@gmail.com" aria-label="Email"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect height="16" rx="2" width="20" x="2" y="4"/><path d="M2 7l10 7 10-7"/></svg></a></div></div>
+    <div><div class="footer-col-title">Pages</div><ul class="footer-links"><li><a href="story.html">Our Story</a></li><li><a href="collections.html">Collections</a></li><li><a href="process.html">Process</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="vibes.html">Vibes</a></li></ul></div>
+    <div><div class="footer-col-title">Commission</div><ul class="footer-links"><li><a href="order.html">Start a Commission</a></li><li><a href="process.html">How It Works</a></li><li><a href="mailto:sirtajreid@gmail.com">Email Us</a></li></ul></div>
+    <div><div class="footer-col-title">Connect</div><ul class="footer-links"><li><a href="https://www.instagram.com/tajmahallicapparel/" target="_blank">Instagram</a></li><li><a href="https://www.facebook.com/profile.php?id=100087296873162" target="_blank">Facebook</a></li><li><a href="mailto:sirtajreid@gmail.com">sirtajreid@gmail.com</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><span>© 2025 Taj Mahallic Apparel. All rights reserved.</span><span style="color:var(--gold);font-family:'Cinzel',serif;letter-spacing:0.2em;font-size:0.6rem;">✦ TODAY'S ANOTHER JOURNEY ✦</span><span>Atlanta, GA · Black-Owned</span></div>
+</footer>
+<script>
+  const reveals=document.querySelectorAll('.reveal');
+  const obs=new IntersectionObserver((entries)=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*80);obs.unobserve(e.target);}});},{threshold:0.1});
+  reveals.forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

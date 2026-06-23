@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Space+Grotesk:wght@300;400;500;700&family=Barlow+Condensed:ital,wght@0,700;0,900;1,700;1,900&display=swap" rel="stylesheet"/>
+<title>Vibes — Today's Another Journey</title><style>
+:root{--black:#0A0A0A;--white:#F5F5F0;--yellow:#F7C500;--grey:#D8D8D3;--mid:#888880;--red:#CC2200;--border:3px solid #0A0A0A;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Space Grotesk',sans-serif;background:var(--white);color:var(--black);overflow-x:hidden;}
+.topbar{background:var(--black);padding:0.4rem 2rem;display:flex;justify-content:space-between;align-items:center;font-family:'Oswald',sans-serif;font-size:0.7rem;letter-spacing:0.18em;color:var(--mid);text-transform:uppercase;}
+.topbar a{color:var(--mid);text-decoration:none;transition:color .15s;}.topbar a:hover{color:var(--yellow);}
+.topbar-socials{display:flex;gap:1.5rem;}
+nav{position:sticky;top:0;z-index:100;background:var(--black);border-bottom:4px solid var(--yellow);padding:0 2rem;display:flex;justify-content:space-between;align-items:stretch;min-height:60px;}
+.nav-brand{display:flex;align-items:center;gap:1rem;text-decoration:none;padding:0.6rem 1.5rem 0.6rem 0;border-right:3px solid #222;margin-right:0.5rem;}
+.nav-wordmark{font-family:'Oswald',sans-serif;font-size:0.85rem;font-weight:700;letter-spacing:0.12em;color:var(--white);text-transform:uppercase;line-height:1.1;}
+.nav-wordmark span{display:block;color:var(--yellow);font-size:0.6rem;letter-spacing:0.2em;}
+.nav-links{display:flex;list-style:none;align-items:stretch;}
+.nav-links a{font-family:'Oswald',sans-serif;font-size:0.78rem;font-weight:500;letter-spacing:0.14em;color:#888;text-decoration:none;text-transform:uppercase;display:flex;align-items:center;padding:0 1rem;border-left:1px solid #222;transition:color .15s,background .15s;}
+.nav-links a:hover{color:var(--yellow);background:#111;}
+.nav-links a.active{color:var(--yellow);}
+.nav-cta{background:var(--yellow);color:var(--black);font-family:'Oswald',sans-serif;font-size:0.78rem;font-weight:700;letter-spacing:0.14em;padding:0 1.5rem;text-transform:uppercase;text-decoration:none;display:flex;align-items:center;transition:background .15s;border-left:3px solid #333;margin-left:0.5rem;}
+.nav-cta:hover{background:#FFD700;}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;align-self:center;}
+.hamburger span{display:block;width:24px;height:3px;background:var(--yellow);}
+/* PAGE HERO */
+.page-hero{background:var(--black);padding:5rem 4rem 4rem;border-bottom:4px solid var(--yellow);position:relative;overflow:hidden;}
+.page-hero::before{content:attr(data-bg);position:absolute;font-family:'Barlow Condensed',sans-serif;font-size:18rem;font-weight:900;color:rgba(247,197,0,0.04);top:50%;left:50%;transform:translate(-50%,-50%);text-transform:uppercase;pointer-events:none;letter-spacing:-0.05em;white-space:nowrap;}
+.page-eyebrow{font-family:'Oswald',sans-serif;font-size:0.7rem;font-weight:500;letter-spacing:0.35em;color:var(--yellow);text-transform:uppercase;margin-bottom:1rem;display:flex;align-items:center;gap:0.8rem;}
+.page-eyebrow::before{content:'';display:block;width:30px;height:3px;background:var(--yellow);}
+.page-title{font-family:'Barlow Condensed',sans-serif;font-size:clamp(3.5rem,9vw,7rem);font-weight:900;color:var(--white);text-transform:uppercase;line-height:0.9;letter-spacing:-0.01em;}
+.page-title em{color:var(--yellow);font-style:normal;}
+.page-subtitle{font-family:'Space Grotesk',sans-serif;font-size:0.9rem;color:#666;margin-top:1.2rem;max-width:600px;}
+/* TICKER */
+.ticker{background:var(--yellow);overflow:hidden;white-space:nowrap;padding:0.65rem 0;border-top:3px solid var(--black);border-bottom:3px solid var(--black);}
+.ticker-track{display:inline-block;animation:ticker 22s linear infinite;}
+.ticker-track span{font-family:'Oswald',sans-serif;font-size:0.78rem;font-weight:700;letter-spacing:0.22em;color:var(--black);text-transform:uppercase;margin-right:2.5rem;}
+.ticker-sep{color:var(--red);margin-right:2.5rem;font-weight:900;}
+/* SECTION */
+.section{padding:5rem 4rem;max-width:1200px;margin:0 auto;}
+.section-label{font-family:'Oswald',sans-serif;font-size:0.7rem;font-weight:700;letter-spacing:0.3em;color:var(--yellow);text-transform:uppercase;margin-bottom:0.8rem;background:var(--black);display:inline-block;padding:0.2rem 0.6rem;}
+.section-title{font-family:'Barlow Condensed',sans-serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:900;text-transform:uppercase;line-height:0.95;letter-spacing:-0.01em;margin-bottom:2rem;}
+/* BTN */
+.btn-primary{background:var(--yellow);color:var(--black);font-family:'Oswald',sans-serif;font-size:0.8rem;font-weight:700;letter-spacing:0.18em;padding:1rem 2rem;text-decoration:none;text-transform:uppercase;display:inline-block;transition:background .15s;border:3px solid var(--yellow);}
+.btn-primary:hover{background:#FFD700;}
+.btn-ghost{background:transparent;color:var(--black);font-family:'Oswald',sans-serif;font-size:0.8rem;font-weight:600;letter-spacing:0.18em;padding:1rem 2rem;text-decoration:none;text-transform:uppercase;display:inline-block;border:3px solid var(--black);transition:background .15s,color .15s;}
+.btn-ghost:hover{background:var(--black);color:var(--white);}
+/* FOOTER */
+footer{background:var(--black);border-top:4px solid var(--yellow);padding:3rem 2rem 1.5rem;}
+.footer-inner{max-width:1200px;margin:0 auto;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:2rem;}
+.footer-brand-name{font-family:'Barlow Condensed',sans-serif;font-size:1.6rem;font-weight:900;color:var(--yellow);text-transform:uppercase;letter-spacing:0.05em;line-height:1;margin-bottom:0.3rem;}
+.footer-brand-sub{font-family:'Oswald',sans-serif;font-size:0.6rem;letter-spacing:0.2em;color:var(--mid);text-transform:uppercase;margin-bottom:1rem;}
+.footer-tagline{font-size:0.8rem;color:#555;line-height:1.6;margin-bottom:1.2rem;}
+.footer-col-title{font-family:'Oswald',sans-serif;font-size:0.7rem;font-weight:700;letter-spacing:0.2em;color:var(--white);text-transform:uppercase;margin-bottom:1rem;padding-bottom:0.5rem;border-bottom:1px solid #222;}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:0.55rem;}
+.footer-links a{font-size:0.76rem;color:#555;text-decoration:none;transition:color .15s;}
+.footer-links a:hover{color:var(--yellow);}
+.footer-socials{display:flex;gap:0.5rem;}
+.fsoc{width:32px;height:32px;border:2px solid #333;display:flex;align-items:center;justify-content:center;color:#555;text-decoration:none;font-family:'Oswald',sans-serif;font-size:0.6rem;font-weight:700;transition:border-color .15s,color .15s;}
+.fsoc:hover{border-color:var(--yellow);color:var(--yellow);}
+.footer-bottom{border-top:1px solid #1a1a1a;padding-top:1.2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;font-family:'Oswald',sans-serif;font-size:0.6rem;letter-spacing:0.12em;color:#333;text-transform:uppercase;}
+.footer-bottom-accent{color:var(--yellow);font-weight:700;}
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+@keyframes ticker{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+@media(max-width:960px){.nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--black);flex-direction:column;border-bottom:4px solid var(--yellow);}.nav-links.open{display:flex;}.nav-links a{padding:1rem 2rem;border-left:none;border-bottom:1px solid #1a1a1a;}.hamburger{display:flex;}nav{position:relative;}.footer-grid{grid-template-columns:1fr 1fr;}.section{padding:3rem 2rem;}.page-hero{padding:3rem 2rem 2.5rem;}}
+@media(max-width:600px){.footer-grid{grid-template-columns:1fr;}.footer-bottom{flex-direction:column;text-align:center;}.topbar{flex-direction:column;gap:0.3rem;text-align:center;}}
+</style>
+</head><body><div class="topbar"><span>Black-Owned · Atlanta, GA · Bold, Accessible, Custom · Worldwide Shipping</span><div class="topbar-socials"><a href="https://www.facebook.com/profile.php?id=100087296873162" target="_blank">FB</a><a href="https://www.instagram.com/tajmahallicapparel/" target="_blank">IG</a><a href="mailto:sirtajreid@gmail.com">✉</a></div></div>
+<nav><a class="nav-brand" href="../index.html"><div style="width:38px;height:38px;flex-shrink:0;"><svg viewBox="0 0 100 110" width="38" height="42" xmlns="http://www.w3.org/2000/svg">
+        <rect x="5" y="8" width="90" height="14" fill="#F7C500"/>
+        <rect x="40" y="22" width="20" height="55" fill="#F7C500"/>
+        <polygon points="50,10 22,80 32,80 50,32 68,80 78,80" fill="#F5F5F0"/>
+        <rect x="30" y="58" width="40" height="10" fill="#F5F5F0"/>
+        <rect x="46" y="22" width="12" height="50" fill="#0A0A0A"/>
+        <path d="M46,72 Q38,72 38,82 Q38,92 50,92 Q62,92 62,80 L50,80 Q50,84 50,84 Q46,84 46,80 Z" fill="#0A0A0A"/>
+        <rect x="38" y="8" width="28" height="12" fill="#0A0A0A"/></svg></div><div class="nav-wordmark">Today's Another Journey<span>Bold Accessible Streetwear</span></div></a><ul class="nav-links" id="navLinks"><li><a href="story.html">Story</a></li><li><a href="collections.html">Collections</a></li><li><a href="process.html">Process</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="vibes.html" class="active">Vibes</a></li><li><a href="order.html">Order</a></li></ul><div style="display:flex;align-items:stretch;"><a class="nav-cta" href="order.html">Get Yours →</a><div class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')" style="margin-left:1rem;"><span></span><span></span><span></span></div></div></nav><div class="ticker"><div class="ticker-track"><span>Today's Another Journey</span><span class="ticker-sep">◆</span><span>Custom Streetwear</span><span class="ticker-sep">◆</span><span>Bold & Accessible</span><span class="ticker-sep">◆</span><span>Black-Owned</span><span class="ticker-sep">◆</span><span>Atlanta GA</span><span class="ticker-sep">◆</span><span>Every Day Every Budget</span><span class="ticker-sep">◆</span><span>Wear Your Journey</span><span class="ticker-sep">◆</span><span>Today's Another Journey</span><span class="ticker-sep">◆</span><span>Custom Streetwear</span><span class="ticker-sep">◆</span><span>Bold & Accessible</span><span class="ticker-sep">◆</span><span>Black-Owned</span><span class="ticker-sep">◆</span><span>Atlanta GA</span><span class="ticker-sep">◆</span><span>Every Day Every Budget</span><span class="ticker-sep">◆</span><span>Wear Your Journey</span><span class="ticker-sep">◆</span></div></div>
+<div class="page-hero" data-bg="VIBE">
+  <p class="page-eyebrow">The Soundtrack</p>
+  <h1 class="page-title">Press Play.<br/><em>Feel the City.</em></h1>
+  <p class="page-subtitle">The music behind the movement. This is what we build to.</p>
+</div>
+<div style="max-width:900px;margin:0 auto;padding:5rem 4rem;">
+  <div style="border:var(--border);margin-bottom:3rem;" class="reveal">
+    <div style="background:var(--yellow);padding:1.2rem 1.5rem;border-bottom:var(--border);display:flex;justify-content:space-between;align-items:center;">
+      <div style="font-family:'Oswald',sans-serif;font-size:0.82rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;">The Main Playlist</div>
+      <div style="font-family:'Oswald',sans-serif;font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:#333;">The core sound</div>
+    </div>
+    <iframe src="https://open.spotify.com/embed/playlist/52Wa85aeiSvjclQP5zNXpZ?utm_source=generator&theme=0" width="100%" height="352" frameborder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+  </div>
+  <div style="border:var(--border);margin-bottom:3rem;" class="reveal">
+    <div style="background:var(--black);padding:1.2rem 1.5rem;border-bottom:4px solid var(--yellow);display:flex;justify-content:space-between;align-items:center;">
+      <div style="font-family:'Oswald',sans-serif;font-size:0.82rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--yellow);">Journey Playlist</div>
+      <div style="font-family:'Oswald',sans-serif;font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:#555;">For the road</div>
+    </div>
+    <iframe src="https://open.spotify.com/embed/playlist/5aIgL7orMDaP6WljuhFLAM?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+  </div>
+  <div style="border:var(--border);padding:2rem;text-align:center;" class="reveal">
+    <div style="font-family:'Oswald',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:0.8rem;">More Music</div>
+    <p style="font-size:0.85rem;color:#666;margin-bottom:1.5rem;">Follow us on Spotify for new playlists that drop with each collection.</p>
+    <a class="btn-primary" href="https://open.spotify.com" target="_blank">Open Spotify →</a>
+  </div>
+</div>
+<footer><div class="footer-inner"><div class="footer-grid"><div><div class="footer-brand-name">Today's Another Journey</div><div class="footer-brand-sub">By Taj Mahallic Apparel · Atlanta, GA</div><p class="footer-tagline">Bold custom streetwear for every day, every body, every budget.</p><div class="footer-socials"><a class="fsoc" href="https://www.instagram.com/tajmahallicapparel/" target="_blank">IG</a><a class="fsoc" href="https://www.facebook.com/profile.php?id=100087296873162" target="_blank">FB</a><a class="fsoc" href="mailto:sirtajreid@gmail.com">✉</a></div></div><div><div class="footer-col-title">Pages</div><ul class="footer-links"><li><a href="story.html">Story</a></li><li><a href="collections.html">Collections</a></li><li><a href="process.html">Process</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="vibes.html">Vibes</a></li></ul></div><div><div class="footer-col-title">Order</div><ul class="footer-links"><li><a href="order.html">Start an Order</a></li><li><a href="process.html">How It Works</a></li><li><a href="mailto:sirtajreid@gmail.com">Email Us</a></li></ul></div><div><div class="footer-col-title">Connect</div><ul class="footer-links"><li><a href="https://www.instagram.com/tajmahallicapparel/" target="_blank">Instagram</a></li><li><a href="mailto:sirtajreid@gmail.com">sirtajreid@gmail.com</a></li><li><a href="../../index.html">← Tajmahallic Signature</a></li></ul></div></div><div class="footer-bottom"><span>© 2025 Taj Mahallic Apparel.</span><span class="footer-bottom-accent">◆ TODAY'S ANOTHER JOURNEY ◆</span><span>Atlanta, GA · Black-Owned</span></div></div></footer><script>const reveals=document.querySelectorAll(".reveal");const obs=new IntersectionObserver((e)=>{e.forEach((el,i)=>{if(el.isIntersecting){setTimeout(()=>el.target.classList.add("visible"),i*80);obs.unobserve(el.target);}});},{threshold:0.08});reveals.forEach(el=>obs.observe(el));</script></body></html>

@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>TODAY'S ANOTHER JOURNEY — Custom Streetwear · ATL via NYC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Space+Grotesk:wght@300;400;500;700&family=Barlow+Condensed:ital,wght@0,700;0,900;1,700;1,900&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --black: #0A0A0A;
+  --white: #F5F5F0;
+  --yellow: #F7C500;
+  --grey: #D8D8D3;
+  --mid: #888880;
+  --red: #CC2200;
+  --border: 3px solid #0A0A0A;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Space Grotesk', sans-serif;
+  background: var(--white);
+  color: var(--black);
+  overflow-x: hidden;
+}
+
+/* ── TAJ LOGO SVG ── */
+/* Overlapping T (back), A (mid), J (front) monogram */
+
+/* ── TOPBAR ── */
+.topbar {
+  background: var(--black);
+  padding: 0.4rem 2rem;
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.7rem; letter-spacing: 0.18em; color: var(--mid);
+  text-transform: uppercase;
+}
+.topbar a { color: var(--mid); text-decoration: none; transition: color .15s; }
+.topbar a:hover { color: var(--yellow); }
+.topbar-socials { display: flex; gap: 1.5rem; }
+
+/* ── NAV ── */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--black);
+  border-bottom: 4px solid var(--yellow);
+  padding: 0 2rem;
+  display: flex; justify-content: space-between; align-items: stretch;
+  min-height: 60px;
+}
+.nav-brand {
+  display: flex; align-items: center; gap: 1rem;
+  text-decoration: none; padding: 0.6rem 0;
+  border-right: 3px solid #222;
+  padding-right: 1.5rem;
+  margin-right: 0.5rem;
+}
+.nav-logo-wrap { width: 38px; height: 38px; flex-shrink: 0; }
+.nav-wordmark {
+  font-family: 'Oswald', sans-serif; font-size: 0.85rem;
+  font-weight: 700; letter-spacing: 0.12em; color: var(--white);
+  text-transform: uppercase; line-height: 1.1;
+}
+.nav-wordmark span { display: block; color: var(--yellow); font-size: 0.6rem; letter-spacing: 0.2em; }
+.nav-links { display: flex; list-style: none; align-items: stretch; }
+.nav-links a {
+  font-family: 'Oswald', sans-serif; font-size: 0.78rem; font-weight: 500;
+  letter-spacing: 0.14em; color: #888; text-decoration: none;
+  text-transform: uppercase; display: flex; align-items: center;
+  padding: 0 1rem; border-left: 1px solid #222;
+  transition: color .15s, background .15s;
+}
+.nav-links a:hover { color: var(--yellow); background: #111; }
+.nav-links a.active { color: var(--yellow); }
+.nav-cta {
+  background: var(--yellow); color: var(--black);
+  font-family: 'Oswald', sans-serif; font-size: 0.78rem; font-weight: 700;
+  letter-spacing: 0.14em; padding: 0 1.5rem; text-transform: uppercase;
+  text-decoration: none; display: flex; align-items: center;
+  transition: background .15s;
+  border-left: 3px solid #333;
+  margin-left: 0.5rem;
+}
+.nav-cta:hover { background: #FFD700; }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; align-self: center; }
+.hamburger span { display: block; width: 24px; height: 3px; background: var(--yellow); }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  background: var(--black);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: relative;
+  overflow: hidden;
+}
+.hero-left {
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 5rem 3rem 5rem 4rem;
+  border-right: 4px solid var(--yellow);
+  position: relative; z-index: 1;
+}
+.hero-tag {
+  font-family: 'Oswald', sans-serif; font-size: 0.72rem; font-weight: 500;
+  letter-spacing: 0.35em; color: var(--yellow); text-transform: uppercase;
+  margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.8rem;
+}
+.hero-tag::before { content: ''; display: block; width: 30px; height: 3px; background: var(--yellow); }
+.hero-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(4rem, 9vw, 8rem);
+  font-weight: 900; line-height: 0.88;
+  color: var(--white); text-transform: uppercase;
+  margin-bottom: 2rem;
+  letter-spacing: -0.01em;
+}
+.hero-title .line-yellow { color: var(--yellow); display: block; }
+.hero-title .line-outline {
+  -webkit-text-stroke: 2px var(--white);
+  color: transparent; display: block;
+}
+.hero-desc {
+  font-size: 0.92rem; line-height: 1.75; color: #888;
+  max-width: 400px; margin-bottom: 2.5rem;
+  border-left: 3px solid var(--yellow); padding-left: 1rem;
+}
+.hero-btns { display: flex; gap: 0; }
+.btn-primary {
+  background: var(--yellow); color: var(--black);
+  font-family: 'Oswald', sans-serif; font-size: 0.8rem; font-weight: 700;
+  letter-spacing: 0.18em; padding: 1rem 2rem; text-decoration: none;
+  text-transform: uppercase; display: inline-block; transition: background .15s;
+  border: 3px solid var(--yellow);
+}
+.btn-primary:hover { background: #FFD700; }
+.btn-ghost {
+  background: transparent; color: var(--white);
+  font-family: 'Oswald', sans-serif; font-size: 0.8rem; font-weight: 600;
+  letter-spacing: 0.18em; padding: 1rem 2rem; text-decoration: none;
+  text-transform: uppercase; display: inline-block;
+  border: 3px solid #333; transition: border-color .15s, color .15s;
+}
+.btn-ghost:hover { border-color: var(--white); }
+
+/* ── HERO RIGHT ── */
+.hero-right {
+  display: flex; align-items: center; justify-content: center;
+  padding: 4rem 3rem;
+  position: relative;
+}
+.hero-right::before {
+  content: 'TAJ';
+  position: absolute; font-family: 'Barlow Condensed', sans-serif;
+  font-size: 22rem; font-weight: 900; color: rgba(247,197,0,0.04);
+  text-transform: uppercase; pointer-events: none; user-select: none;
+  letter-spacing: -0.05em;
+}
+.hero-logo-display {
+  width: 280px; height: 280px;
+  border: 4px solid var(--yellow);
+  display: flex; align-items: center; justify-content: center;
+  background: var(--white);
+  position: relative; z-index: 1;
+}
+.hero-stats {
+  position: absolute; bottom: 3rem; right: 3rem;
+  display: flex; flex-direction: column; gap: 1rem; z-index: 1;
+}
+.stat-item { text-align: right; }
+.stat-num { font-family: 'Barlow Condensed', sans-serif; font-size: 2.5rem; font-weight: 900; color: var(--yellow); line-height: 1; }
+.stat-label { font-family: 'Oswald', sans-serif; font-size: 0.6rem; letter-spacing: 0.2em; color: var(--mid); text-transform: uppercase; }
+
+/* ── TICKER ── */
+.ticker {
+  background: var(--yellow); overflow: hidden; white-space: nowrap;
+  padding: 0.65rem 0; border-top: 3px solid var(--black); border-bottom: 3px solid var(--black);
+}
+.ticker-track { display: inline-block; animation: ticker 22s linear infinite; }
+.ticker-track span {
+  font-family: 'Oswald', sans-serif; font-size: 0.78rem; font-weight: 700;
+  letter-spacing: 0.22em; color: var(--black); text-transform: uppercase; margin-right: 2.5rem;
+}
+.ticker-sep { color: var(--red); margin-right: 2.5rem; font-weight: 900; }
+
+/* ── QUICK NAV GRID ── */
+.nav-grid-section { background: var(--white); }
+.nav-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  border-left: var(--border); border-top: var(--border);
+}
+.nav-card {
+  border-right: var(--border); border-bottom: var(--border);
+  padding: 2.5rem 2rem; text-decoration: none; color: var(--black);
+  display: block; transition: background .15s;
+  position: relative; overflow: hidden;
+}
+.nav-card:hover { background: var(--black); color: var(--white); }
+.nav-card:hover .nav-card-arrow { color: var(--yellow); }
+.nav-card:hover .nav-card-num { color: var(--yellow); }
+.nav-card-num {
+  font-family: 'Barlow Condensed', sans-serif; font-size: 3.5rem; font-weight: 900;
+  color: var(--grey); line-height: 1; margin-bottom: 0.5rem;
+  transition: color .15s;
+}
+.nav-card-title {
+  font-family: 'Oswald', sans-serif; font-size: 1.1rem; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.5rem;
+}
+.nav-card-desc { font-size: 0.8rem; line-height: 1.6; color: #666; transition: color .15s; }
+.nav-card:hover .nav-card-desc { color: #aaa; }
+.nav-card-arrow {
+  position: absolute; bottom: 1.5rem; right: 1.5rem;
+  font-family: 'Barlow Condensed', sans-serif; font-size: 1.5rem; font-weight: 900;
+  transition: color .15s;
+}
+
+/* ── STATEMENT SECTION ── */
+.statement {
+  background: var(--black); padding: 6rem 4rem;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center;
+  border-top: 4px solid var(--yellow); border-bottom: 4px solid var(--yellow);
+}
+.statement-quote {
+  font-family: 'Barlow Condensed', sans-serif; font-size: clamp(2.5rem,5vw,4.5rem);
+  font-weight: 900; color: var(--white); text-transform: uppercase; line-height: 1;
+  letter-spacing: -0.01em;
+}
+.statement-quote em { color: var(--yellow); font-style: normal; display: block; }
+.statement-body { font-size: 0.9rem; line-height: 1.8; color: #888; border-left: 3px solid var(--yellow); padding-left: 1.5rem; }
+.statement-body p { margin-bottom: 1rem; }
+.statement-body strong { color: var(--white); }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--black); border-top: 4px solid var(--yellow);
+  padding: 3rem 2rem 1.5rem;
+}
+.footer-inner { max-width: 1200px; margin: 0 auto; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 2rem; }
+.footer-brand-name { font-family: 'Barlow Condensed', sans-serif; font-size: 1.8rem; font-weight: 900; color: var(--yellow); text-transform: uppercase; letter-spacing: 0.05em; line-height: 1; margin-bottom: 0.3rem; }
+.footer-brand-sub { font-family: 'Oswald', sans-serif; font-size: 0.62rem; letter-spacing: 0.2em; color: var(--mid); text-transform: uppercase; margin-bottom: 1rem; }
+.footer-tagline { font-size: 0.82rem; color: #555; line-height: 1.6; margin-bottom: 1.2rem; }
+.footer-col-title { font-family: 'Oswald', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.2em; color: var(--white); text-transform: uppercase; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid #222; }
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
+.footer-links a { font-size: 0.78rem; color: #555; text-decoration: none; transition: color .15s; letter-spacing: 0.02em; }
+.footer-links a:hover { color: var(--yellow); }
+.footer-socials { display: flex; gap: 0.5rem; }
+.fsoc { width: 32px; height: 32px; border: 2px solid #333; display: flex; align-items: center; justify-content: center; color: #555; text-decoration: none; font-family: 'Oswald', sans-serif; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.1em; transition: border-color .15s, color .15s; }
+.fsoc:hover { border-color: var(--yellow); color: var(--yellow); }
+.footer-bottom { border-top: 1px solid #1a1a1a; padding-top: 1.2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; font-family: 'Oswald', sans-serif; font-size: 0.62rem; letter-spacing: 0.12em; color: #333; text-transform: uppercase; }
+.footer-bottom-accent { color: var(--yellow); font-weight: 700; }
+
+/* ── ANIMATIONS ── */
+@keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 960px) {
+  .hero { grid-template-columns: 1fr; min-height: auto; }
+  .hero-left { padding: 4rem 2rem; border-right: none; border-bottom: 4px solid var(--yellow); }
+  .hero-right { padding: 3rem 2rem; min-height: 300px; }
+  .hero-stats { position: static; flex-direction: row; gap: 2rem; margin-top: 2rem; }
+  .stat-item { text-align: left; }
+  .statement { grid-template-columns: 1fr; gap: 2rem; padding: 4rem 2rem; }
+  .nav-grid { grid-template-columns: 1fr 1fr; }
+  .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: var(--black); flex-direction: column; border-bottom: 4px solid var(--yellow); }
+  .nav-links.open { display: flex; }
+  .nav-links a { padding: 1rem 2rem; border-left: none; border-bottom: 1px solid #1a1a1a; }
+  .hamburger { display: flex; }
+  nav { position: relative; flex-wrap: wrap; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .nav-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+  .topbar { flex-direction: column; gap: 0.3rem; text-align: center; }
+  .hero-title { font-size: clamp(3.5rem, 14vw, 6rem); }
+}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <span>Black-Owned · Atlanta, GA · Bold, Accessible, Custom · Worldwide Shipping</span>
+  <div class="topbar-socials">
+    <a href="https://www.facebook.com/profile.php?id=100087296873162" target="_blank" rel="noopener">FB</a>
+    <a href="https://www.instagram.com/tajmahallicapparel/" target="_blank" rel="noopener">IG</a>
+    <a href="mailto:sirtajreid@gmail.com">✉</a>
+  </div>
+</div>
+
+
+<!-- BRAND SWITCHER -->
+<div style="background:#111;border-bottom:3px solid #F7C500;padding:0.5rem 2rem;display:flex;justify-content:center;align-items:center;gap:2rem;font-family:'Oswald',sans-serif;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;">
+  <a href="../index.html" style="color:#555;text-decoration:none;transition:color .15s;" onmouseover="this.style.color='#F7C500'" onmouseout="this.style.color='#555'">← Tajmahallic Signature</a>
+  <span style="color:#333;">|</span>
+  <span style="color:#F7C500;font-weight:700;">◆ TODAY'S ANOTHER JOURNEY</span>
+</div>
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="index.html">
+    <div class="nav-logo-wrap">
+      <!-- TAJ overlapping monogram - T behind, A middle, J front -->
+      <svg viewBox="0 0 100 110" width="38" height="42" xmlns="http://www.w3.org/2000/svg">
+        <!-- T (back layer) -->
+        <rect x="5" y="8" width="90" height="14" fill="#F7C500"/>
+        <rect x="40" y="22" width="20" height="55" fill="#F7C500"/>
+        <!-- A (middle) -->
+        <polygon points="50,10 22,80 32,80 50,32 68,80 78,80" fill="#F5F5F0"/>
+        <rect x="30" y="58" width="40" height="10" fill="#F5F5F0"/>
+        <!-- J (front, serif with hook) -->
+        <rect x="46" y="22" width="12" height="50" fill="#0A0A0A"/>
+        <path d="M46,72 Q38,72 38,82 Q38,92 50,92 Q62,92 62,80 L50,80 Q50,84 50,84 Q46,84 46,80 Z" fill="#0A0A0A"/>
+        <rect x="38" y="8" width="28" height="12" fill="#0A0A0A"/>
+      </svg>
+    </div>
+    <div class="nav-wordmark">
+      Today's Another Journey
+      <span>Bold Accessible Streetwear</span>
+    </div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="pages/story.html">Story</a></li>
+    <li><a href="pages/collections.html">Collections</a></li>
+    <li><a href="pages/process.html">Process</a></li>
+    <li><a href="pages/gallery.html">Gallery</a></li>
+    <li><a href="pages/vibes.html">Vibes</a></li>
+    <li><a href="pages/order.html">Order</a></li>
+  </ul>
+  <div style="display:flex;align-items:stretch;gap:0;">
+    <a class="nav-cta" href="pages/order.html">Get Yours →</a>
+    <div class="hamburger" id="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')" style="margin-left:1rem;">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-tag">Atlanta · NYC Energy · Est. 2022</p>
+    <h1 class="hero-title">
+      <span>Today's</span>
+      <span class="line-yellow">Another</span>
+      <span class="line-outline">Journey</span>
+    </h1>
+    <p class="hero-desc">
+      Bold, accessible custom streetwear. Made for every day, every body, every budget.
+      No cap — just real pieces built for real people.
+    </p>
+    <div class="hero-btns">
+      <a class="btn-primary" href="pages/order.html">Order Now</a>
+      <a class="btn-ghost" href="pages/collections.html">See Collections</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-logo-display">
+      <svg viewBox="0 0 100 110" width="220" height="240" xmlns="http://www.w3.org/2000/svg">
+        <!-- T (back) -->
+        <rect x="5" y="8" width="90" height="15" fill="#0A0A0A"/>
+        <rect x="40" y="23" width="20" height="55" fill="#0A0A0A"/>
+        <!-- A (middle) with cutout feel -->
+        <polygon points="50,10 20,82 32,82 50,34 68,82 80,82" fill="#888"/>
+        <rect x="29" y="59" width="42" height="11" fill="#888"/>
+        <!-- J (front) -->
+        <rect x="45" y="23" width="13" height="50" fill="#0A0A0A"/>
+        <path d="M45,73 Q36,73 36,83 Q36,95 50,95 Q64,95 64,81 L51,81 Q51,86 50,86 Q45,86 45,82 Z" fill="#0A0A0A"/>
+        <rect x="36" y="8" width="30" height="13" fill="#0A0A0A"/>
+      </svg>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Custom Made</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">ATL</div>
+        <div class="stat-label">Black-Owned</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span>Today's Another Journey</span><span class="ticker-sep">◆</span>
+    <span>Custom Streetwear</span><span class="ticker-sep">◆</span>
+    <span>Bold &amp; Accessible</span><span class="ticker-sep">◆</span>
+    <span>Black-Owned</span><span class="ticker-sep">◆</span>
+    <span>Atlanta, GA</span><span class="ticker-sep">◆</span>
+    <span>Every Day Every Budget</span><span class="ticker-sep">◆</span>
+    <span>Wear Your Journey</span><span class="ticker-sep">◆</span>
+    <span>Today's Another Journey</span><span class="ticker-sep">◆</span>
+    <span>Custom Streetwear</span><span class="ticker-sep">◆</span>
+    <span>Bold &amp; Accessible</span><span class="ticker-sep">◆</span>
+    <span>Black-Owned</span><span class="ticker-sep">◆</span>
+    <span>Atlanta, GA</span><span class="ticker-sep">◆</span>
+    <span>Every Day Every Budget</span><span class="ticker-sep">◆</span>
+    <span>Wear Your Journey</span><span class="ticker-sep">◆</span>
+  </div>
+</div>
+
+<!-- QUICK NAV GRID -->
+<section class="nav-grid-section">
+  <div class="nav-grid reveal">
+    <a class="nav-card" href="pages/story.html">
+      <div class="nav-card-num">01</div>
+      <div class="nav-card-title">Our Story</div>
+      <p class="nav-card-desc">From New York to Atlanta. The real story behind the brand.</p>
+      <span class="nav-card-arrow">→</span>
+    </a>
+    <a class="nav-card" href="pages/collections.html">
+      <div class="nav-card-num">02</div>
+      <div class="nav-card-title">Collections</div>
+      <p class="nav-card-desc">Tees, hoodies, headwear, merch. Custom everything.</p>
+      <span class="nav-card-arrow">→</span>
+    </a>
+    <a class="nav-card" href="pages/process.html">
+      <div class="nav-card-num">03</div>
+      <div class="nav-card-title">Process</div>
+      <p class="nav-card-desc">How your order goes from idea to your hands.</p>
+      <span class="nav-card-arrow">→</span>
+    </a>
+    <a class="nav-card" href="pages/gallery.html">
+      <div class="nav-card-num">04</div>
+      <div class="nav-card-title">Gallery</div>
+      <p class="nav-card-desc">The work. Real pieces, real people, real streets.</p>
+      <span class="nav-card-arrow">→</span>
+    </a>
+    <a class="nav-card" href="pages/vibes.html">
+      <div class="nav-card-num">05</div>
+      <div class="nav-card-title">Vibes</div>
+      <p class="nav-card-desc">The playlist. Press play and feel the city.</p>
+      <span class="nav-card-arrow">→</span>
+    </a>
+    <a class="nav-card" href="pages/order.html" style="background:var(--yellow);">
+      <div class="nav-card-num" style="color:rgba(0,0,0,0.15);">06</div>
+      <div class="nav-card-title">Order Now</div>
+      <p class="nav-card-desc" style="color:#333;">Start your custom order. Fast, easy, affordable.</p>
+      <span class="nav-card-arrow" style="color:var(--black);">→</span>
+    </a>
+  </div>
+</section>
+
+<!-- STATEMENT -->
+<section class="statement reveal">
+  <div class="statement-quote">
+    Every day is<em>Another</em>chance to level up.
+  </div>
+  <div class="statement-body">
+    <p>Today's Another Journey is the everyday line from Taj Mahallic Apparel — built for the people who want <strong>real custom pieces without the luxury price tag.</strong></p>
+    <p>Bold graphics, quality fabric, accessible price points. From a fresh tee for the block to a full merch run for your brand — we build what you need, the way you want it.</p>
+    <p style="color:var(--yellow);font-family:'Oswald',sans-serif;letter-spacing:0.12em;font-size:0.85rem;font-weight:600;text-transform:uppercase;">Black-Owned · Atlanta, GA · Est. 2022</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-name">Today's Another Journey</div>
+        <div class="footer-brand-sub">By Taj Mahallic Apparel · Atlanta, GA</div>
+        <p class="footer-tagline">Bold, accessible custom streetwear. Made for every day, every body, every budget.</p>
+        <div class="footer-socials">
+          <a class="fsoc" href="https://www.instagram.com/tajmahallicapparel/" target="_blank" rel="noopener">IG</a>
+          <a class="fsoc" href="https://www.facebook.com/profile.php?id=100087296873162" target="_blank" rel="noopener">FB</a>
+          <a class="fsoc" href="mailto:sirtajreid@gmail.com">✉</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Pages</div>
+        <ul class="footer-links">
+          <li><a href="pages/story.html">Our Story</a></li>
+          <li><a href="pages/collections.html">Collections</a></li>
+          <li><a href="pages/process.html">Process</a></li>
+          <li><a href="pages/gallery.html">Gallery</a></li>
+          <li><a href="pages/vibes.html">Vibes</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Order</div>
+        <ul class="footer-links">
+          <li><a href="pages/order.html">Start an Order</a></li>
+          <li><a href="pages/process.html">How It Works</a></li>
+          <li><a href="mailto:sirtajreid@gmail.com">Email Us</a></li>
+          <li><a href="https://www.instagram.com/tajmahallicapparel/" target="_blank">DM on IG</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Also Check</div>
+        <ul class="footer-links">
+          <li><a href="https://www.instagram.com/tajmahallicapparel/" target="_blank">Instagram</a></li>
+          <li><a href="https://www.facebook.com/profile.php?id=100087296873162" target="_blank">Facebook</a></li>
+          <li><a href="mailto:sirtajreid@gmail.com">sirtajreid@gmail.com</a></li>
+          <li><a href="../index.html">← Tajmahallic (Signature)</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Taj Mahallic Apparel. All rights reserved.</span>
+      <span class="footer-bottom-accent">◆ TODAY'S ANOTHER JOURNEY ◆</span>
+      <span>Atlanta, GA · Black-Owned</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => { if (e.isIntersecting) { setTimeout(() => e.target.classList.add('visible'), i * 80); obs.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  reveals.forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
